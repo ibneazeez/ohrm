@@ -1,0 +1,30 @@
+app:
+  url: http://localhost:8080
+  locale: de_DE
+  timezone: Europe/Berlin
+  
+management:
+  context-path: /sysinfo
+  
+security:
+  # Extends SpringBootWebSecurityConfiguration.DEFAULT_IGNORED
+  ignored:
+    - /css/**
+    - /js/**   
+    - /images/**
+    - /**/favicon.ico
+    - /resources/css/**
+    - /resources/js/**   
+    - /resources/images/**
+    - /javax.faces.resource/**
+    - /public/**
+  basic.enabled: false
+
+# forward EclipseLink logging to Slf4J
+spring.jpa:
+  properties:
+    eclipselink.logging.logger: in.co.psoft.hrm.bone.jpa.Slf4jSessionLogger
+    
+# turns on sql logging
+logging.level:
+  org.eclipse.persistence.logging.sql: DEBUG

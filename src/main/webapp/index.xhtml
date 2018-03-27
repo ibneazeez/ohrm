@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">    
+
+<ui:define name="body">
+
+<h:form id="form">
+  <div class="container">
+    <div>
+      <h1>Home page</h1>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <p:messages globalOnly="true" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p:panel header="Values are saved in the view scope" styleClass="form-horizontal">
+          <div class="form-group">
+            <p:outputLabel value="Value" for="field" styleClass="col-sm-3 control-label" />
+            <div class="col-sm-9">
+              <p:inputText id="field" value="#{indexView.field}" pt:placeholder="Input a value" required="true">
+                <f:validateLength minimum="2" />
+              </p:inputText>
+              <p:messages for="field" />
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <p:commandButton value="Submit" action="#{indexBean.submit}" ajax="false"
+                  icon="fa fa-save" />
+              <p:commandButton value="Reset (Ajax)" actionListener="#{indexBean.reset}" update="@form"
+                  icon="fa fa-trash" immediate="true" />
+              <p:button value="Go to home" outcome="/index" 
+                  icon="fa fa-home" />
+            </div>
+          </div>          
+          
+        </p:panel>
+      </div>
+      
+      <div class="col-md-6">
+        <p:panel header="Submitted values saved in view scope">
+          <p:dataList value="#{indexView.submittedValues}" var="value" type="ordered">
+            <h:outputText value="#{value}" />
+          </p:dataList>
+        </p:panel>
+      </div>
+      
+    </div>
+  </div>
+</h:form>
+
+</ui:define>
+</ui:composition>
