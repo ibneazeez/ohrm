@@ -1,11 +1,8 @@
-package de.wirthedv.appname.domain;
+package in.co.psoft.hrm.domain;
 
 import static com.mysema.query.types.PathMetadataFactory.*;
 
 import com.mysema.query.types.path.*;
-
-import in.co.psoft.hrm.appname.domain.City;
-
 import com.mysema.query.types.PathMetadata;
 import javax.annotation.Generated;
 import com.mysema.query.types.Path;

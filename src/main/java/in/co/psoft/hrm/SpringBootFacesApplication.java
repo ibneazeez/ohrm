@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname;
+package in.co.psoft.hrm;
 
 import java.util.Collections;
 import java.util.HashSet;

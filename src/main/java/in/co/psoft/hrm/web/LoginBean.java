@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.web;
+package in.co.psoft.hrm.web;
 
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
 
@@ -25,7 +25,7 @@ public class LoginBean {
         return errorMessage;
     }
 
-    // TODO: localize messages
+    //  localize messages
     public void init() {
         if (EVENT_LOGOUT.equals(event)) {
             errorMessage = "You are logged out.";

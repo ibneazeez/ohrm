@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package in.co.psoft.hrm.appname.domain;
+package in.co.psoft.hrm.domain;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.config;
+package in.co.psoft.hrm.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
-import in.co.psoft.hrm.appname.AppProfiles;
+import in.co.psoft.hrm.AppProfiles;
 
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)

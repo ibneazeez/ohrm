@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.config;
+package in.co.psoft.hrm.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

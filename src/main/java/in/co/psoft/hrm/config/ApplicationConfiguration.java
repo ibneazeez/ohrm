@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.config;
+package in.co.psoft.hrm.config;
 
 import java.net.URL;
 import java.util.Locale;

@@ -154,7 +154,7 @@
                         <configuration>
                             <targetFolder>target/generated-sources/java</targetFolder>
                             <packages>
-                                <package>in.co.psoft.hrm.appname.domain</package>
+                                <package>in.co.psoft.hrm.domain</package>
                             </packages>
                             <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>

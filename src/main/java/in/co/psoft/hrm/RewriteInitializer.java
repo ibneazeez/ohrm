@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname;
+package in.co.psoft.hrm;
 
 import java.util.EnumSet;
 import java.util.Set;

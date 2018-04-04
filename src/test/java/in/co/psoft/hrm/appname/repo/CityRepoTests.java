@@ -13,10 +13,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import in.co.psoft.hrm.appname.AppProfiles;
-import in.co.psoft.hrm.appname.SpringBootFacesApplication;
-import in.co.psoft.hrm.appname.domain.QCity;
-import in.co.psoft.hrm.appname.repo.CityRepo;
+import in.co.psoft.hrm.AppProfiles;
+import in.co.psoft.hrm.SpringBootFacesApplication;
+import in.co.psoft.hrm.domain.QCity;
+import in.co.psoft.hrm.repo.CityRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringBootFacesApplication.class)

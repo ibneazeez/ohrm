@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.service.security;
+package in.co.psoft.hrm.service.security;
 
 import java.util.ArrayList;
 import java.util.Collections;

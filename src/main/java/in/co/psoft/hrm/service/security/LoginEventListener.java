@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.service.security;
+package in.co.psoft.hrm.service.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

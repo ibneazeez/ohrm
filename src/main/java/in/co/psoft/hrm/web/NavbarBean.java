@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.web;
+package in.co.psoft.hrm.web;
 
 import javax.servlet.http.HttpServletRequest;
 

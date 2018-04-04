@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname;
+package in.co.psoft.hrm;
 
 public class AppProfiles {
     public static final String TEST = "test";

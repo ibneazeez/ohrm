@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.config;
+package in.co.psoft.hrm.config;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -36,9 +36,9 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import in.co.psoft.hrm.appname.AppProfiles;
-import in.co.psoft.hrm.appname.SpringBootFacesApplication;
-import in.co.psoft.hrm.appname.config.WebSecurityConfiguration;
+import in.co.psoft.hrm.AppProfiles;
+import in.co.psoft.hrm.SpringBootFacesApplication;
+import in.co.psoft.hrm.config.WebSecurityConfiguration;
 
 /**
  * Basic integration tests.

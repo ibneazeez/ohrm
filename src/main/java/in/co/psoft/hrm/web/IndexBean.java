@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.web;
+package in.co.psoft.hrm.web;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -17,6 +17,7 @@ public class IndexBean {
 	    indexView.getSubmittedValues().add(indexView.getField());
 	    
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Value submitted."));
+		//return "index";
 	}
 	
 	public void reset() {
