@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package in.co.psoft.hrm.appname;
+package in.co.psoft.hrm;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

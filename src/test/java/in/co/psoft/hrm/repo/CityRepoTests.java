@@ -1,4 +1,4 @@
-package in.co.psoft.hrm.appname.repo;
+package in.co.psoft.hrm.repo;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.emptyIterable;
