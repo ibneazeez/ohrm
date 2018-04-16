@@ -32,7 +32,13 @@ public class NavbarBean {
         } else if (pathMatches("/cities/**")) {
             return "cities";
         }
-        
+        else if (pathMatches("/users/**")) {
+            return "users";
+        }
+        else if (pathMatches("/adduser/**")) {
+            return "adduser";
+        }
+
         return "unknown";
     }
     

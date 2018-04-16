@@ -1,40 +1,176 @@
 <!DOCTYPE html>
-<ui:composition
-	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-  
-  <!-- http://getbootstrap.com/components/#body-padding-required -->
-  <h:outputStylesheet>
-    body { padding-top: 70px; }
-  </h:outputStylesheet>
+<h:outputStylesheet>
 
-  <div class="navbar navbar-fixed-top navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <h:outputLink value="/" styleClass="navbar-brand">Project name</h:outputLink>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <!-- TODO: current active -->
-          <li class="#{navbarBean.activeMenuItem == 'home' ? 'active': ''}"><h:outputLink value="/">Home</h:outputLink></li>
-          <li class="#{navbarBean.activeMenuItem == 'cities' ? 'active': ''}"><h:outputLink value="/cities/list.xhtml">Cities</h:outputLink></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <h:outputLink value="/logout">Logout</h:outputLink>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-     
- </ui:composition>
+.ui-message-error-detail{
+	color: red !important;
+}
+
+.ui-datepicker table {
+        width: 100%;
+        background: linear-gradient(#999999, #737373);
+        border: 1px solid #080808;
+    }
+
+.ui-datepicker-header {
+    background: rgba(68, 68, 68, 1);
+    color: #ffffff !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif";
+    border-width: 1px 0 0 0;
+    border-color: #fff;
+    padding: 3px 3px 1px 1px;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+    font-size: 15px;
+    height: auto;
+    color: #ffffff !important;
+}
+
+.ui-datepicker-prev {
+    float: left;
+    cursor: pointer;
+    background-position: center -30px;
+    color: #ffffff !important;
+}
+
+.ui-datepicker-next {
+    float: right;
+    cursor: pointer;
+    background-position: center 0px;
+    color: #ffffff !important;
+}
+
+.ui-datepicker thead {
+    background-color: #f7f7f7;
+
+    /*border-bottom: 1px solid #bbb;*/
+}
+
+.ui-datepicker th {
+    background-color:#808080;
+    text-transform: uppercase;
+    
+    #color: #666666;
+    text-align: center;
+    padding: 5px 5px 0px 0px;
+}
+
+.ui-datepicker tbody td {
+    padding: 0;
+}
+
+    .ui-datepicker tbody td:last-child {
+        border-right: 0px;
+    }
+
+.ui-datepicker tbody tr {
+    border-bottom: 1px solid #080808;
+}
+
+    .ui-datepicker tbody tr:last-child {
+        border-bottom: 0px;
+    }
+
+.ui-datepicker a {
+    text-decoration: none;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+    display: inline-block;
+    /*font-weight: bold;*/
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+      background: linear-gradient(#999999, #737373);
+      color:#ffffff;
+      height:40px;
+      width:40px;
+
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+    background: #080808;
+    color: #FFFFFF;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+    background: #33adff;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+    -moz-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+    color: #e0e0e0;
+    text-shadow: 0px 1px 0px #4d7a85;
+    border: 1px solid #55838f;
+    position: relative;
+    margin: -1px;
+}
+
+.ui-datepicker-unselectable .ui-state-default {
+    background: #D6E4BE;
+    color: #000;
+}
+.ui-outputlabel ui-widget{
+	text-align: left;
+}
+.ui_text
+{
+margin-left:50px;
+}
+button, input, select, textarea{
+margin-left:50px !important;
+margin-bottom:20px !important;
+border-radius:5px !important;
+}
+label{
+color:darkblue !important;
+}
+
+
+</h:outputStylesheet>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">HRM Application</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><h:outputLink value="/public/Organization.xhtml">Organisation</h:outputLink></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Configurations<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Role Management</a></li>
+						<li><a href="#">Screen Management</a></li>
+						<li><a href="#">Users Permission</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">User Management<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><h:outputLink value="/users/addUser.xhtml">New User</h:outputLink></li>
+						<li><a href="#">List Users</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Profile</a></li>
+				<li><h:outputLink value="/logout">Logout</h:outputLink></li>
+			</ul>
+		</div>
+	</nav>
+</ui:composition>
+
+
+
