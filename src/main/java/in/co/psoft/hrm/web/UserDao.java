@@ -6,7 +6,7 @@ import in.co.psoft.hrm.domain.User;
 
 public interface UserDao {
 
-	User findById(Integer id);
+	User findById(Long id);
 
 	List<User> findAll();
 

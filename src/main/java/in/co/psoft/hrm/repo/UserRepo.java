@@ -13,6 +13,7 @@ public interface UserRepo extends Repository<User, Long>, QueryDslPredicateExecu
 
     List<User> findAll();
     
+    User findById(Long id);
   
 	Page<User> findAll(Pageable pageable);
 

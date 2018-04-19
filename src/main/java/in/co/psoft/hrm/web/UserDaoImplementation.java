@@ -10,17 +10,19 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import in.co.psoft.hrm.domain.User;
+import in.co.psoft.hrm.repo.UserRepo;
 
 @Component
 public class UserDaoImplementation implements UserDao {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	private UserRepo userRepo;
 
 	@Override
-	public User findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User findById(Long id) {
+		return userRepo.findById(id);
 	}
 	
 

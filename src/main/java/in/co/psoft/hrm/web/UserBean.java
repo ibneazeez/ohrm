@@ -2,6 +2,8 @@ package in.co.psoft.hrm.web;
 
 import java.util.List;
 
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -12,7 +14,9 @@ import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
 import in.co.psoft.hrm.domain.User;
 import in.co.psoft.hrm.repo.UserRepo;
 
-@ViewScopedComponent("userBean")
+//@ViewScopedComponent("userBean")
+//@RequestScoped
+@RequestScopedComponent("userBean")
 public class UserBean{
 
 
@@ -22,8 +26,9 @@ public class UserBean{
 	@Autowired
 	private UserDaoImplementation userDAO;
 	
-	@Autowired
+	//@Autowired
 	private User user;
+	
 	private List<User> users;
 
 	public User getUser() {
@@ -59,5 +64,11 @@ public class UserBean{
 	return "userlist";
 	
 	}	
+	
+	public String findById(Long id) {
+		user = userRepo.findById(id);	
+		System.out.println(user);		
+		return "addUser"; 
+	}
 		
 }

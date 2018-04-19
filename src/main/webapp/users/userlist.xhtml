@@ -8,7 +8,7 @@
     xmlns:p="http://primefaces.org/ui">    
 
 <ui:define name="body">
-<h:form id="form">
+<h:form id="form" >
   <div class="container">
     <div>
       <h1>Users</h1>
@@ -33,7 +33,8 @@
           <h:outputText id="last_name" value="#{users.lastName}" />
         </h:column>
         <h:column>
-        <h:commandLink value="Update"/>
+        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.findById(users.id)}"/>
+        <h:commandLink value="Update" action="#{userBean.findById(users.id)}"/>
         </h:column>
          <h:column>
          <h:link value="Delete"/>

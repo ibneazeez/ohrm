@@ -200,10 +200,16 @@ public class User implements Serializable {
 		return this.lastName;
 	}
 
-	
 	@Override
 	public String toString() {
-		return getFirstName() + "," + getLastName();
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userRole=" + userRole
+				+ ", password=" + password + ", username=" + username + ", status=" + status + ", organizationId="
+				+ organizationId + ", middleName=" + middleName + ", employeeId=" + employeeId + ", employeePhoto="
+				+ employeePhoto + ", gender=" + gender + ", dob=" + dob + ", country=" + country + ", maritalStatus="
+				+ maritalStatus + "]";
 	}
+
+	
+	
 }
 
