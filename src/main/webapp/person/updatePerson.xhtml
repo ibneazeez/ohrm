@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">    
+    
+<ui:define name="body">
+    <h2>Employee Registration</h2>
+    
+    
+    <div class="ui_text">
+    <h:form >
+  
+        <h:outputLabel for="firstname" value="Firstname"/>
+        <p:inputText id="firstname" value="#{personBean.user.firstName}" required="true"/>
+        <h:message id="firstname-msg" for="firstname" style="color:red;" />
+        <br />
+        
+        <h:outputLabel for="lastName" value="Lastname"/>
+        <p:inputText id="lastName" value="#{personBean.user.lastName}" required="true" />
+        <h:message id="msg" for="lastName" style="color:red;" />
+        <br />
+        
+        <h:outputLabel for="userRole" value="User Role"/>
+        <p:inputText id="userRole" value="#{personBean.user.userRole}" required="true" />
+        <h:message id="userRole-msg" for="userRole" style="color:red;" />
+        <br />
+        
+        <h:outputLabel for="username" value="Username"/>
+        <p:inputText id="username" value="#{personBean.user.username}" required="true" />
+        <h:message id="username-msg" for="username" style="color:red;" />
+        <br />
+        
+        <h:inputHidden id="id" value="#{personBean.user.id}" required="true" />
+        <br />
+        
+        <p:commandButton value="Submit" ajax="false" action="#{personBean.updateUser}"/>
+          
+            
+    </h:form>
+    
+	</div>
+ </ui:define>
+</ui:composition>
