@@ -16,11 +16,15 @@
  
  <div class="ui_text">
     <h:form class="form-signin"  enctype="multipart/form-data">
-    
-    
-        <p:messages autoUpdate="false"/>
+   <p:messages autoUpdate="false"/>
         <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
      
+     
+       <h:outputLabel  value="UserID" style="font-weight:bold"/>
+            <p:inputText value="#{userBean.user.id}" readonly= "#{facesContext.renderResponse}"/>
+           
+            
+            
        <h:outputLabel for="role" value="Role" />
             <p:selectOneMenu id="role" value="#{user.userRole}" style="width:150px" required="true">  
              <f:selectItem itemLabel="Select"/>          
@@ -34,7 +38,7 @@
                                          </select> -->
             
              <h:outputLabel for="uname" value="UserName" style="font-weight:bold"/>
-            <p:inputText id="uname" value="#{user.username}" required="true" label="UserName" autofocus="autofocus"  autocomplete="off">
+            <p:inputText id="uname" value="#{user.username}" required="true" label="UserName" autofocus="autofocus" class="form-control" placeholder="UserName" autocomplete="off">
             <f:validateLength minimum="3" maximum="30" />
                 <p:clientValidator />
             </p:inputText>
@@ -42,11 +46,11 @@
             <h:outputText value="#{addUser.uname}"/>
                   
                      <h:outputLabel for="password" value="Password" style="font-weight:bold"/>
-             <p:password id="password" value="#{user.password}" feedback="false" required="true" match="password2" autofocus="autofocus"  autocomplete="off"/>
+             <p:password id="password" value="#{user.password}" feedback="false" required="true" match="password2" autofocus="autofocus" class="form-control" placeholder="Password" autocomplete="off"/>
               <p:message for="password"/>
               
                      <br/><h:outputLabel for="password" value="ConfirmPassword" style="font-weight:bold"/>
-            <p:password id="password2" value="#{addUser.password}" feedback="false"  required="true" autofocus="autofocus" autocomplete="off" />
+            <p:password id="password2" value="#{addUser.password}" feedback="false"  required="true" autofocus="autofocus" class="form-control" placeholder="ConfirmPassword" autocomplete="off" />
               <p:message for="password"/>
               
               <br/>
@@ -64,17 +68,17 @@
                                          </select>
  
  -->               <h:outputLabel for="fname" value="FirstName" style="font-weight:bold"/>
-            <p:inputText id="fname" value="#{user.firstName}" required="true" label="FName" autofocus="autofocus"  autocomplete="off"/>
+            <p:inputText id="fname" value="#{userBean.user.firstName}" required="true" label="FName" autofocus="autofocus" class="form-control" placeholder="FirstName" autocomplete="off"/>
             <p:message for="fname"/>
             <h:outputText value="#{addUser.fname}"/>
             
             <h:outputLabel for="lname" value="LastName" style="font-weight:bold"/>
-            <p:inputText id="lname" value="#{user.lastName}" required="true" label="LName" autofocus="autofocus" autocomplete="off"/>
+            <p:inputText id="lname" value="#{userBean.user.lastName}" required="true" label="LName" autofocus="autofocus" class="form-control" placeholder="LastName" autocomplete="off"/>
             <p:message for="lname"/>
             <h:outputText value="#{addUser.lname}"/>
             
            <h:outputLabel for="mname" value="MiddleName" style="font-weight:bold"/>
-            <p:inputText id="mname" value="#{user.middleName}" required="true" label="MName" autofocus="autofocus"  autocomplete="off"/>
+            <p:inputText id="mname" value="#{user.middleName}" required="true" label="MName" autofocus="autofocus" class="form-control" placeholder="MiddleName" autocomplete="off"/>
             <p:message for="mname"/>
             <h:outputText value="#{addUser.mname}"/>
          <!--   
@@ -124,8 +128,7 @@
                 <f:selectItems value="#{addUser.nationalities}" />
             </p:selectOneMenu>   
             
-        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.saveUser}"/>
-           
+      <p:commandButton value="Update" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.updateUser(user)}"/>
         </h:panelGrid>
 
      

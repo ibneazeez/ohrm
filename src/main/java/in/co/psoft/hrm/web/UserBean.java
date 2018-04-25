@@ -1,41 +1,53 @@
 package in.co.psoft.hrm.web;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.servlet.ServletContext;
+
+import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import in.co.psoft.hrm.bone.jsf.ViewScopedComponent;
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
 import in.co.psoft.hrm.domain.User;
 import in.co.psoft.hrm.repo.UserRepo;
+import in.co.psoft.hrm.web.UserDaoImplementation;
 
-//@ViewScopedComponent("userBean")
-//@RequestScoped
+
+
 @RequestScopedComponent("userBean")
-public class UserBean{
+
+@ManagedBean
+public class UserBean {
 
 
 	@Autowired
 	private UserRepo userRepo;
-	
+
 	@Autowired
 	private UserDaoImplementation userDAO;
-	
-	//@Autowired
+	@Autowired
 	private User user;
-	
 	private List<User> users;
 
+	
 	public User getUser() {
 		return user;
+		
 	}
 
 	public void setUser(User user) {
+		
 		this.user = user;
 	}
 
@@ -51,24 +63,111 @@ public class UserBean{
 		return users;
 	}
 
-	public String saveUser() {
-		
+	public String saveUser() throws IOException {
+		String imgPath = this.uploadFile();
+		user.setEmployeePhoto(imgPath);
 		userDAO.save(user);
-		return "userlist";
+        return "userlist";
 	}
-	public String updateUser() {
-	ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-	 String firstname = ec.getRequestParameterMap().get("form1:first_name");
-	 System.out.println(firstname);
-	 userDAO.update(user);	
+
+	public String updateUser(User user) throws IOException {
+		String imgPath = this.uploadFile();
+		user.setEmployeePhoto(imgPath);
+
+		System.out.println(user);
+	userDAO.updateUser(user);
 	return "userlist";
-	
-	}	
-	
-	public String findById(Long id) {
+		}
+	public String getUser(Long id) {
 		user = userRepo.findById(id);	
-		System.out.println(user);		
-		return "addUser"; 
+		System.out.println(user);
+		return "update"; 
 	}
-		
+	
+	public String deleteUser(Long id) {
+		//user=userRepo.findById(id);
+		//System.out.println(user);
+		userDAO.delete(id);
+	return "userlist";
+	}
+	
+
+
+	private Part file1;
+
+	private String message;
+
+	public Part getFile1() {
+		return file1;
+	}
+
+	public void setFile1(Part file1) {
+		this.file1 = file1;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String uploadFile() throws IOException {
+
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		ServletContext servletContext = (ServletContext) context.getExternalContext().getContext();
+
+		String path = servletContext.getRealPath("");
+		String fileName = null;
+		boolean file1Success = false;
+
+		if (file1.getSize() > 0) {
+			fileName = Utils.getFileNameFromPart(file1);
+			
+			File f = new File(fileName);
+			fileName = f.getName();
+
+			/**
+			 * destination where the file will be uploaded
+			 */
+					 
+			File outputFile = new File(path+File.separator + "resources" + File.separator + "images" +File.separator+  fileName);
+		 inputStream = file1.getInputStream();
+			outputStream = new FileOutputStream(outputFile);
+			byte[] buffer = new byte[Constants.BUFFER_SIZE];
+			int bytesRead = 0;
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			if (outputStream != null) {
+				outputStream.close();
+			}
+			if (inputStream != null) {
+				inputStream.close();
+			}
+			file1Success = true;
+		}
+		if (file1Success) {
+			/**
+			 * set the success message when the file upload is successful
+			 */
+			setMessage("File successfully uploaded to " + path);
+			return "/resources/images/"+fileName;
+			
+		} else {
+			/**
+			 * set the error message when error occurs during the file upload
+			 */
+			setMessage("Error, select atleast one file!");
+		}
+		/**
+		 * return to the same view
+		 */
+		return null;
+	}
+
 }

@@ -20,13 +20,13 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath firstName = createString("firstName");
     
-    public final StringPath middleName = createString("middleName");
+   // public final StringPath middleName = createString("middleName");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath lastName = createString("lastName");
     
-    public final StringPath country = createString("country");
+   public final StringPath country = createString("country");
     
     public final StringPath userRole = createString("userRole");
 
@@ -50,7 +50,7 @@ public class QUser extends EntityPathBase<User> {
     
     public final StringPath createdAt = createString("createdAt");
     
-    public QUser(String variable) {
+   public QUser(String variable) {
         super(User.class, forVariable(variable));
     }
 

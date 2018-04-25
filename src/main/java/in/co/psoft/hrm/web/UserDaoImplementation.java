@@ -6,26 +6,68 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
+
 import in.co.psoft.hrm.domain.User;
-import in.co.psoft.hrm.repo.UserRepo;
 
 @Component
 public class UserDaoImplementation implements UserDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	private UserRepo userRepo;
 
+	/*public String findById(Long id){
+        if(em.find(User.class,id)!=null)
+            return ((User)em.find(User.class,id)).toString();
+        else
+            return "Entity does not exist ";
+        
+}*/
+
+
+/*public void updateUser(Long id){
+
+       User entityUser=(User)em.find(User.class,user.getId());
+      
+       if(entityUser!=null)
+       {
+    	   
+          entityUser.setFirstName(user.getFirstName());
+           System.out.println("entity updated successfully");
+          
+                              
+       }
+        else
+            System.out.println("Entity does not exist");
+        
+}*/
 	@Override
-	public User findById(Long id) {
-		return userRepo.findById(id);
-	}
+
+	public void updateUser(User user) {
+		if(user!=null)
+	em.merge(user);}
+				
+public void delete(Long id){
+/*	System.out.println(user.getId());
+	User entityUser=(User)em.find(User.class,user.getId());
+	System.out.println(entityUser);
+
+	if(entityUser!=null)*/
+		//System.out.println(user);
+		User entityUser=(User)em.find(User.class,id);
+		em.remove(entityUser);
+	/*User entityUser=em.find(User.class,user.getId());
+	System.out.println(entityUser);
+		em.remove(entityUser);
+*/
 	
 
+
+
+}
+  
+	
 	@Override
 	public List<User> findAll() {
 		// TODO Auto-generated method stub
@@ -34,19 +76,16 @@ public class UserDaoImplementation implements UserDao {
 
 	@Override
 	public void save(User user) {
-		
 		em.persist(user);
+		
 		}
-
 	@Override
-	public void update (User transientUser) {
-	    em.merge(transientUser);
-	}
-	@Override
-	public void delete(Integer id) {
+	public String findById(Long id) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
+
+	
 	/*
 	 * NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	 * 

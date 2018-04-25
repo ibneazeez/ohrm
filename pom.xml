@@ -187,6 +187,13 @@
                         <artifactId>org.eclipse.persistence.jpa</artifactId>
                         <version>${eclipselink.version}</version>
                     </dependency>
+                    
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2.1</version>
+</dependency>
+                    
                 </dependencies>
             </plugin>
                     
@@ -199,6 +206,11 @@
                         <artifactId>spring-instrument</artifactId>
                         <version>${spring.version}</version>
                     </dependency>
+                    <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
                 </dependencies>
                 <configuration>
                     <argLine>-javaagent:${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar</argLine>

@@ -24,28 +24,34 @@
 				</div>
 
 				<div class="table-responsive">
-					<h:dataTable value="#{userBean.users}" var="users"
-						styleClass="table table-striped table-hover">
-						<h:column>
-							<f:facet name="header">User ID</f:facet>
-							<h:outputText value="#{users.id}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">FirstName</f:facet>
-							<h:outputText id="first_name" value="#{users.firstName}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">LastName</f:facet>
-							<h:outputText id="last_name" value="#{users.lastName}" />
-						</h:column>
-						<h:column>
-							<h:commandLink value="Update" />
-						</h:column>
-						<h:column>
-							<h:link value="Delete" />
-						</h:column>
-					</h:dataTable>
-				</div>
+<h:dataTable value="#{userBean.users}" var="users" styleClass="table table-striped table-hover"> 
+ <h:column>
+          <f:facet name="header">User ID</f:facet>
+          <h:outputText id="id" value="#{users.id}" var="delete" />
+        </h:column>
+          <!-- <h:column>
+          <f:facet name="header">Photo</f:facet>
+	<img src="#{userBean.user.employeePhoto}" height="90px" width="50px" />
+			</h:column>
+          -->
+        <h:column>
+          <f:facet name="header">FirstName</f:facet>
+          <h:outputText id="first_name" value="#{users.firstName}" />
+        </h:column>
+        <h:column>
+          <f:facet name="header">LastName</f:facet>
+          <h:outputText id="last_name" value="#{users.lastName}" />
+        </h:column>
+        
+        <h:column>
+          <h:commandLink value="Update" action="#{userBean.getUser(users.id)}"/>
+        </h:column>
+        <h:column>
+       <h:commandLink value="Delete" onclick="alert('Do you want to delete #{users.id} user?')" actionListener="#{userBean.deleteUser(users.id)}"/>
+         </h:column>
+         
+          </h:dataTable>
+    </div>
 			</div>
 		</h:form>
 	</ui:define>

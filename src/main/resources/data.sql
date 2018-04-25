@@ -12,6 +12,4 @@ insert into city(country, name, state, map) values ('UK', 'Southampton', 'Hampsh
 insert into city(country, name, state, map) values ('USA', 'Atlanta', 'GA', '33.748995, -84.387982');
 insert into city(country, name, state, map) values ('USA', 'Chicago', 'IL', '41.878114, -87.629798');
 insert into city(country, name, state, map) values ('USA', 'Eau Claire', 'WI', '44.811349, -91.498494');
-
-
-insert into user(firstname, lastname, middlename, user_role, username, password, status, organization_id,employee_id, employee_photo, gender, marital_status, dob, country) values ( 'Sunil', 'Suresh', 'Raja', 'admin', 'uname', 'pword', 'Active', 1, 'EPM008', 'photo.png', 'Male', 'Single', '03-04-1980', 'india');
+insert into user(firstname, lastname, middlename, user_role, username, password, status, organization_id,employee_id, employee_photo, gender, marital_status, dob, country) values ( 'Sunil', 'Suresh', 'Raja', 'admin', 'uname', 'pword', 'Active', 1, 'EPM008', 'photo.png', 'Male', 'Single', null , 'india');  

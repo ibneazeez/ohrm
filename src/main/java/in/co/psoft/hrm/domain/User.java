@@ -17,7 +17,7 @@
 package in.co.psoft.hrm.domain;
 
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +28,7 @@ import javax.persistence.Id;
 import in.co.psoft.hrm.bone.jsf.ViewScopedComponent;
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
 
-@ViewScopedComponent("user")
+@RequestScopedComponent("user")
 @Entity
 public class User implements Serializable {
 
@@ -58,14 +58,33 @@ public class User implements Serializable {
 	private String employeeId;
 	@Column(nullable = false,name="employee_photo")
 	private String employeePhoto;
-	@Column(nullable = false,name="gender")
-	private String gender;
-	@Column(nullable = false,name="dob")
-	private String dob;
 	@Column(nullable = false,name="country")
 	private String country;
 	@Column(nullable = false,name="marital_status")
 	private String maritalStatus;
+	@Column(nullable = false,name="gender")
+	private String gender;
+	@Column(name="dob")
+	Date dob;
+
+	public String getEmployeePhoto() {
+		return employeePhoto;
+	}
+
+
+
+	public void setEmployeePhoto(String employeePhoto) {
+		this.employeePhoto = employeePhoto;
+	}
+
+public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+public Date getDob() {
+	return dob;
+}
+
 	public String getMaritalStatus() {
 		return maritalStatus;
 	}
@@ -132,13 +151,7 @@ public class User implements Serializable {
 		this.employeeId = employeeId;
 	}
 
-	public String getEmployeePhoto() {
-		return employeePhoto;
-	}
-
-	public void setEmployeePhoto(String employeePhoto) {
-		this.employeePhoto = employeePhoto;
-	}
+	
 
 	public String getGender() {
 		return gender;
@@ -147,16 +160,8 @@ public class User implements Serializable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-
-	public String getCountry() {
+	
+		public String getCountry() {
 		return country;
 	}
 
@@ -170,8 +175,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	protected User() {
-	}
+	public User() {}
 
 		public Long getId() {
 		return id;
@@ -200,13 +204,15 @@ public class User implements Serializable {
 		return this.lastName;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userRole=" + userRole
 				+ ", password=" + password + ", username=" + username + ", status=" + status + ", organizationId="
 				+ organizationId + ", middleName=" + middleName + ", employeeId=" + employeeId + ", employeePhoto="
-				+ employeePhoto + ", gender=" + gender + ", dob=" + dob + ", country=" + country + ", maritalStatus="
-				+ maritalStatus + "]";
+				+ employeePhoto + ", country=" + country + ", maritalStatus=" + maritalStatus + ", gender=" + gender
+				+ ", dob=" + dob + "]";
 	}
 
 	

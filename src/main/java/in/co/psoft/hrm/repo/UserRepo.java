@@ -13,7 +13,6 @@ public interface UserRepo extends Repository<User, Long>, QueryDslPredicateExecu
 
     List<User> findAll();
     
-    User findById(Long id);
   
 	Page<User> findAll(Pageable pageable);
 
@@ -21,6 +20,9 @@ public interface UserRepo extends Repository<User, Long>, QueryDslPredicateExecu
 			String lastName, Pageable pageable);
 
 	User findByFirstNameAndLastNameAllIgnoringCase(String firstName, String lastName);
+
+
+	User findById(Long id);
 	
 	
 	
