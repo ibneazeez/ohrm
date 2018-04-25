@@ -13,7 +13,7 @@
 <TABLE>
 			<tr>
 				<td>
-					<h3>RoleManagement</h3>
+					<h4 style="color:#483D8B;">RoleManagement</h4>
 				</td>
 				<!-- <td><h:outputLink value="/roleList.xhtml">
 						<img src="./arrow.jpg"
@@ -30,12 +30,12 @@
        <!--  <p:messages autoUpdate="false"/> -->
         <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
         
-        <h:outputLabel for="role" value="RoleName" class="for-lable"/>
-             <p:inputText id="role" value="#{user.userRole}" required="true" label="RoleName"/>
+        <h:outputLabel for="role" value="RoleName" class="text"/>
+             <p:inputText id="role" value="#{user.userRole}" required="true" label="RoleName" class="form-control" placeholder="Role Name"/>
             <p:message for="role"/>
             <h:outputText value="#{addUser.role}"/>
      
-      <h:outputLabel for="status" value="Status" class="for-lable" />
+      <h:outputLabel for="status" value="Status" class="text" />
             <p:selectOneMenu id="status" value="#{user.status}" style="width:150px" required="true">
              <p:message for="status" />
                <f:selectItem itemLabel="Select"/>

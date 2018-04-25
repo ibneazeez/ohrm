@@ -9,10 +9,11 @@
     
 
     <ui:define name="body">
+    
 		<TABLE>
 			<tr>
 				<td>
-					<h3 class="space">Users Permission</h3>
+					<h4 style="color:#483D8B;">Users Permission</h4>
 				</td>
 				<!-- <td><h:outputLink value="/users/userPermissionList.xhtml">
 						<img src="./arrow.jpg"
@@ -40,21 +41,17 @@
 				placeholder="Integer 5 digits only" required="required" autofocus="autofocus"
 				autocomplete="off" style="width: 300px;"/> -->
 				<h:outputLabel for="section" value="Section" class="text"/>
-            <p:inputText id="section" value="#{userPermission.section}" label="section" required="true">
-                
-            </p:inputText>
-            <p:message for="section" />
-            <h:outputText value="#{userPermission.section}" />
+           
      
      </h:panelGrid>
      <h:panelGrid value="#{userBean.user}" var="user" id="grid1" columns="1" cellpadding="5" cellspacing="10">
      
      <div style="border:2px outset; width:400px; padding:10px; margin-right: 1020px; border-radius:30px;" class="box effect5">
 				<form action="/action_page.php" >
-				<h4>Employee</h4>
-					<input type="checkbox" name="permission" value="read">Can Read</input><br/>
-					<input type="checkbox" name="permission" value="write">Can Write</input><br/>
-					<input type="checkbox" name="permission" value="delete">Can Delete</input>
+				<li>Employee</li>
+					<input type="checkbox" name="permission" value="read" style="margin-right:5px;">Can Read</input><br/>
+					<input type="checkbox" name="permission" value="write" style="margin-right:5px;">Can Write</input><br/>
+					<input type="checkbox" name="permission" value="delete" style="margin-right:5px;">Can Delete</input>
 				</form>
 	</div>
  

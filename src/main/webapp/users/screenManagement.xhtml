@@ -9,10 +9,11 @@
     
 
     <ui:define name="body">
+   
 		<TABLE>
 			<tr>
 				<td>
-					<h3>ScreenManagement</h3>
+					<h4 style="color:#483D8B;">ScreenManagement</h4>
 				</td>
 				<!-- <td><h:outputLink value="/users/screenList.xhtml">
 						<img src="./arrow.jpg"
@@ -28,11 +29,11 @@
     
        <!--  <p:messages autoUpdate="false"/> -->
         <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
-        <h:outputLabel for="sname" value="ScreenName" class="for-lable"/>
+        <h:outputLabel for="sname" value="ScreenName" class="text"/>
             <!-- <input type="text" id="name" name="name" value="" class="form-control"
 				placeholder="Text only" required="required" autofocus="autofocus"
 				autocomplete="off" style="width: 300px;"/> -->
-				<p:inputText id="sname" value="" required="true" label="ScreenName"/>
+				<p:inputText id="sname" value="" required="true" label="ScreenName" class="form-control" placeholder="Screen Name"/>
             <p:message for="sname"/>
             <h:outputText value="#{addUser.sname}"/>
      	           

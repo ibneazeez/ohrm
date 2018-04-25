@@ -40,41 +40,41 @@ PrimeFaces.validator['custom.emailValidator'] = {
       
      		
      	    <h:outputLabel for="name" value="Name" class="text"/>
-            <p:inputText id="name" value="#{organisation.name}" required="true" label="Name"/>
+            <p:inputText id="name" value="#{organisation.name}" required="true" label="Name" class="form-control" placeholder="Name"/>
             
             <p:message for="name"/>
             <h:outputText value="#{organisation.name}"/>
      	           
  			<h:outputLabel for="tax_id" value="Tax id" class="text"/>
-            <p:inputText id="tax_id" value="#{organisation.tax_id}" required="true" label="tax_id">
-                <f:validateLength minimum="4" maximum="30" />
+            <p:inputText id="tax_id" value="#{organisation.tax_id}" required="true" label="tax_id" class="form-control" placeholder="Tax id">
+                <f:validateLength minimum="3" maximum="20"/>
             </p:inputText>
             <p:message for="tax_id" />
             <h:outputText value="#{organisation.tax_id}" />
             
             <h:outputLabel for="registration_number" value="Registration Number" class="text"/>
-            <p:inputText id="registration_number" value="#{organisation.registration_number}" required="true" label="registration_number">
+            <p:inputText id="registration_number" value="#{organisation.registration_number}" required="true" label="registration_number" class="form-control" placeholder="Registration Number">
                 <f:validateLength minimum="3" maximum="20"/>
             </p:inputText>
             <p:message for="registration_number" />
             <h:outputText value="#{organisation.registration_number}" />
             
             <h:outputLabel for="phone" value="Phone Number" class="text"/>
-            <p:inputText id="phone" value="#{organisation.phone}" label="phone" required="true" minlength="9" maxlength="12">
+            <p:inputText id="phone" value="#{organisation.phone}" label="phone" required="true" minlength="9" maxlength="12" class="form-control" placeholder="Phone Number">
                 <f:validateLength minimum="9" maximum="12"/>
             </p:inputText>
             <p:message for="phone" />
             <h:outputText value="#{organisation.phone}" />
             
             <h:outputLabel for="fax" value="Fax" class="text"/>
-            <p:inputText id="fax" value="#{organisation.fax}" label="fax" required="true">
+            <p:inputText id="fax" value="#{organisation.fax}" label="fax" required="true" class="form-control" placeholder="Fax Number">
                 <f:validateLength minimum="9" maximum="15"/>
             </p:inputText>
             <p:message for="fax" />
             <h:outputText value="#{organisation.fax}" />
             
             <h:outputLabel for="email" value="Email" class="text"/>
-            <p:inputText id="email" value="#{organisation.email}" required="true">
+            <p:inputText id="email" value="#{organisation.email}" required="true" class="form-control" placeholder="Valid Email">
 <!--               <f:validator validatorId="custom.emailValidator" />
  -->            </p:inputText>
             <p:message for="email" display="tooltip" />
@@ -94,32 +94,32 @@ PrimeFaces.validator['custom.emailValidator'] = {
             </p:selectOneMenu>
             
             <h:outputLabel for="state" value="City" class="text"/>
-            <p:inputText id="state" value="#{organisation.state}" label="City" required="true" />
+            <p:inputText id="state" value="#{organisation.state}" label="City" required="true" class="form-control" placeholder="City Name"/>
             
             <p:message for="city"/>
             <h:outputText value="#{organisation.state}"/>
  			
  			 <h:outputLabel for="zip_code" value="Zip_Code" class="text"/>
-            <p:inputText id="zip_code" value="#{organisation.zip_code}" label="zip_code" required="true">
+            <p:inputText id="zip_code" value="#{organisation.zip_code}" label="zip_code" required="true" class="form-control" placeholder="6 Digit ZipCode">
                 <f:validateLength minimum="6" maximum="6"/>
             </p:inputText>
             <p:message for="zip_code" />
             <h:outputText value="#{organisation.zip_code}" />
             
-             <h:outputLabel for="street1" value="Street1" class="text"/>
-            <p:inputText id="street1" value="#{organisation.street1}" required="true" label="street1" maxlength="100"/>
+             <h:outputLabel for="street1" value="Address1" class="text"/>
+            <p:inputText id="street1" value="#{organisation.street1}" required="true" label="street1" maxlength="100" class="form-control" placeholder="Address line1"/>
             
             <p:message for="street1"/>
             <h:outputText value="#{organisation.street1}"/>
             
-             <h:outputLabel for="street2" value="Street2" class="text"/>
-            <p:inputText id="street2" value="#{organisation.street2}" required="true" label="street2" maxlength="100"/>
+             <h:outputLabel for="street2" value="Address2" class="text"/>
+            <p:inputText id="street2" value="#{organisation.street2}" required="true" label="street2" maxlength="100" class="form-control" placeholder="Address line2"/>
             
             <p:message for="street2"/>
             <h:outputText value="#{organisation.street2}"/>
             
              <h:outputLabel for="note" value="Note" class="text"/>
-            <p:inputText id="note" value="#{organisation.note}" required="true" label="note" maxlength="250"/>
+            <p:inputText id="note" value="#{organisation.note}" required="true" label="note" maxlength="250" class="form-control" placeholder="Notes"/>
             
             <p:message for="note"/>
             <h:outputText value="#{organisation.note}"/>
