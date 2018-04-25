@@ -37,7 +37,7 @@ public class PersonBean {
 
 	@PostConstruct
 	public void init() {
-		user = new User();
+		user = new user();
 	}
 
 	public String saveUser() {

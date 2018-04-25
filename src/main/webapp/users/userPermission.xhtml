@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">    
+    
+
+    <ui:define name="body">
+		<TABLE>
+			<tr>
+				<td>
+					<h3 class="space">Users Permission</h3>
+				</td>
+				<!-- <td><h:outputLink value="/users/userPermissionList.xhtml">
+						<img src="./arrow.jpg"
+							style="border: none; margin-left: 1000px; max-width: 80%; width: 40px"
+							alt="test" />
+					</h:outputLink></td> -->
+			</tr>
+		</TABLE>
+
+		<div class="ui_text">
+    <h:form class="form-signin" method="POST" action="userBean.user">
+    
+            <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
+    
+       <!--  <p:messages autoUpdate="false"/> -->
+       
+       <h:outputLabel for="role" value="Role" class="text"/>
+            <p:selectOneMenu id="role" value="#{user.userRole}" style="width:150px" required="true" class="text">  
+            	<f:selectItem itemLabel="Select"/>          
+                <f:selectItems value="#{addUser.roles}" />
+            </p:selectOneMenu>
+            
+         <!--   <h:outputLabel for="registration_number" value="Section" class="for-lable"/>
+            <input type="number" size="5" id="registration_number" name="registration_number" value="#{organisation.registration_number}" class="form-control"
+				placeholder="Integer 5 digits only" required="required" autofocus="autofocus"
+				autocomplete="off" style="width: 300px;"/> -->
+				<h:outputLabel for="section" value="Section" class="text"/>
+            <p:inputText id="section" value="#{userPermission.section}" label="section" required="true">
+                
+            </p:inputText>
+            <p:message for="section" />
+            <h:outputText value="#{userPermission.section}" />
+     
+     </h:panelGrid>
+     <h:panelGrid value="#{userBean.user}" var="user" id="grid1" columns="1" cellpadding="5" cellspacing="10">
+     
+     <div style="border:2px outset; width:400px; padding:10px; margin-right: 1020px; border-radius:30px;" class="box effect5">
+				<form action="/action_page.php" >
+				<h4>Employee</h4>
+					<input type="checkbox" name="permission" value="read">Can Read</input><br/>
+					<input type="checkbox" name="permission" value="write">Can Write</input><br/>
+					<input type="checkbox" name="permission" value="delete">Can Delete</input>
+				</form>
+	</div>
+ 
+ 
+ <!-- <h:outputLabel for="empPermission" value="Permissions" class="text"/>
+        <p:selectCheckboxMenu id="multiple" value="#{userPermission.empPermission}" multiple="true"
+                              required="true" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{userPermission.permissions}" />
+        </p:selectCheckboxMenu> -->
+ 
+</h:panelGrid>
+<br/>
+        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#"/>
+        	
+      
+
+</h:form></div>
+ </ui:define>
+
+</ui:composition>

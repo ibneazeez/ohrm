@@ -24,6 +24,7 @@ public class AddUser {
 	private String fname;
 	private String lname;
 	private String mname;
+	private String sname;
 	private String role;
 	private Map<String,String> roles;
 	private String status;
@@ -101,9 +102,18 @@ public class AddUser {
 		return mname;
 	}
 
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
+	
     public String getRole() {
         return role;
     }

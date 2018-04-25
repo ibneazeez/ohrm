@@ -131,12 +131,30 @@ margin-left:50px !important;
 margin-bottom:20px !important;
 border-radius:5px !important;
 }
-label{
-color:darkblue !important;
+.text{
+font-weight:normal;
 }
 
 
 </h:outputStylesheet>
+
+<script type="text/javascript">
+PrimeFaces.validator['custom.emailValidator'] = {
+		 
+        pattern: /\S+@\S+/,
+ 
+        validate: function(element, value) {
+            //use element.data() to access validation metadata, in this case there is none.
+            if(!this.pattern.test(value)) {
+                throw {
+                    summary: 'Validation Error',
+                    detail: value + ' is not a valid email.'
+                }
+            }
+        }
+    };
+
+</script>
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -150,18 +168,14 @@ color:darkblue !important;
 					data-toggle="dropdown" href="#">Configurations<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Role Management</a></li>
-						<li><a href="#">Screen Management</a></li>
-						<li><a href="#">Users Permission</a></li>
+						<li><h:outputLink value="/users/roleList.xhtml">RoleManagement</h:outputLink></li>
+						<li><h:outputLink value="/users/screenList.xhtml">Screen Management</h:outputLink></li>
+						<li><h:outputLink value="/users/userPermissionList.xhtml">Users Permission</h:outputLink></li>
+						
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">User Management<span
-						class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><h:outputLink value="/users/addUser.xhtml">New User</h:outputLink></li>
-						<li><a href="#">List Users</a></li>
-					</ul></li>
+			<li><h:outputLink value="/users/userlist.xhtml">User Management</h:outputLink></li>
+
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span>

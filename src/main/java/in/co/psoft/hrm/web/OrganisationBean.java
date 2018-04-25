@@ -3,6 +3,9 @@ package in.co.psoft.hrm.web;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+
+import org.hibernate.validator.constraints.Email;
+
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
 
 @RequestScopedComponent("organisation")
@@ -16,6 +19,8 @@ public class OrganisationBean {
 	private Integer registration_number;
 	private Integer phone;
 	private String fax;
+	
+	@Email(message = "must be a valid email")
 	private String email;
 	
 	private String state;

@@ -7,13 +7,9 @@
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:p="http://primefaces.org/ui">    
     
-
 <script type="text/javascript">
-    /**
-     * Faces Validator
-     */
-    PrimeFaces.validator['custom.emailValidator'] = {
- 
+PrimeFaces.validator['custom.emailValidator'] = {
+		 
         pattern: /\S+@\S+/,
  
         validate: function(element, value) {
@@ -27,7 +23,8 @@
         }
     };
 
-  </script>
+</script>
+
   
     <ui:define name="body">
     <h2>Organization Details</h2>
@@ -39,105 +36,96 @@
        <!--  <p:messages autoUpdate="false"/> -->
         <h:panelGrid id="grid" columns="2" cellpadding="5" cellspacing="10">
      		
-     		<h:outputLabel for="integer" value="ID" style="font-weight:bold"/>
-            <p:inputText id="integer" value="#{organisation.integer}" label="ID" required="true">
-                <f:validateLength minimum="4" maximum="4" />
-            </p:inputText>
-            <p:message for="integer" />
-            <h:outputText value="#{organisation.integer}" />
-
+     		
       
      		
-     	    <h:outputLabel for="name" value="Name" style="font-weight:bold"/>
+     	    <h:outputLabel for="name" value="Name" class="text"/>
             <p:inputText id="name" value="#{organisation.name}" required="true" label="Name"/>
             
             <p:message for="name"/>
             <h:outputText value="#{organisation.name}"/>
      	           
- 			<h:outputLabel for="tax_id" value="Tax_id" style="font-weight:bold"/>
+ 			<h:outputLabel for="tax_id" value="Tax id" class="text"/>
             <p:inputText id="tax_id" value="#{organisation.tax_id}" required="true" label="tax_id">
                 <f:validateLength minimum="4" maximum="30" />
             </p:inputText>
             <p:message for="tax_id" />
             <h:outputText value="#{organisation.tax_id}" />
             
-            <h:outputLabel for="registration_number" value="Registration_Number" style="font-weight:bold"/>
+            <h:outputLabel for="registration_number" value="Registration Number" class="text"/>
             <p:inputText id="registration_number" value="#{organisation.registration_number}" required="true" label="registration_number">
                 <f:validateLength minimum="3" maximum="20"/>
             </p:inputText>
             <p:message for="registration_number" />
             <h:outputText value="#{organisation.registration_number}" />
             
-            <h:outputLabel for="phone" value="Phone_Number" style="font-weight:bold"/>
+            <h:outputLabel for="phone" value="Phone Number" class="text"/>
             <p:inputText id="phone" value="#{organisation.phone}" label="phone" required="true" minlength="9" maxlength="12">
                 <f:validateLength minimum="9" maximum="12"/>
             </p:inputText>
             <p:message for="phone" />
             <h:outputText value="#{organisation.phone}" />
             
-            <h:outputLabel for="fax" value="Fax_Number" style="font-weight:bold"/>
+            <h:outputLabel for="fax" value="Fax" class="text"/>
             <p:inputText id="fax" value="#{organisation.fax}" label="fax" required="true">
                 <f:validateLength minimum="9" maximum="15"/>
             </p:inputText>
             <p:message for="fax" />
             <h:outputText value="#{organisation.fax}" />
             
-            <h:outputLabel for="email" value="Email" />
-            <p:inputText id="email" value="#{organisation.email}">
-               <!-- <f:validator validatorId="custom.emailValidator" /> -->
-            </p:inputText>
+            <h:outputLabel for="email" value="Email" class="text"/>
+            <p:inputText id="email" value="#{organisation.email}" required="true">
+<!--               <f:validator validatorId="custom.emailValidator" />
+ -->            </p:inputText>
             <p:message for="email" display="tooltip" />
             <h:outputText value="#{organisation.email}" />
             
-            <p:outputLabel for="country" value="Country: " />
+            <p:outputLabel for="country" value="Country " class="text" />
             <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px" required="true">
                 <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
                 <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{dropdownView.countries}" />
             </p:selectOneMenu>
  
-            <p:outputLabel for="city" value="State: " />
+            <p:outputLabel for="city" value="State " class="text"/>
             <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px" required="true">
                 <f:selectItem itemLabel="Select State" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{dropdownView.cities}" />
             </p:selectOneMenu>
             
-            <h:outputLabel for="state" value="City" style="font-weight:bold"/>
+            <h:outputLabel for="state" value="City" class="text"/>
             <p:inputText id="state" value="#{organisation.state}" label="City" required="true" />
             
             <p:message for="city"/>
             <h:outputText value="#{organisation.state}"/>
  			
- 			 <h:outputLabel for="zip_code" value="Zip_Code" style="font-weight:bold"/>
+ 			 <h:outputLabel for="zip_code" value="Zip_Code" class="text"/>
             <p:inputText id="zip_code" value="#{organisation.zip_code}" label="zip_code" required="true">
                 <f:validateLength minimum="6" maximum="6"/>
             </p:inputText>
             <p:message for="zip_code" />
             <h:outputText value="#{organisation.zip_code}" />
             
-             <h:outputLabel for="street1" value="Street1" style="font-weight:bold"/>
+             <h:outputLabel for="street1" value="Street1" class="text"/>
             <p:inputText id="street1" value="#{organisation.street1}" required="true" label="street1" maxlength="100"/>
             
             <p:message for="street1"/>
             <h:outputText value="#{organisation.street1}"/>
             
-             <h:outputLabel for="street2" value="Street2" style="font-weight:bold"/>
+             <h:outputLabel for="street2" value="Street2" class="text"/>
             <p:inputText id="street2" value="#{organisation.street2}" required="true" label="street2" maxlength="100"/>
             
             <p:message for="street2"/>
             <h:outputText value="#{organisation.street2}"/>
             
-             <h:outputLabel for="note" value="Note" style="font-weight:bold"/>
+             <h:outputLabel for="note" value="Note" class="text"/>
             <p:inputText id="note" value="#{organisation.note}" required="true" label="note" maxlength="250"/>
             
             <p:message for="note"/>
             <h:outputText value="#{organisation.note}"/>
             
             
-            	<h:outputLabel for="created_at" value="created_at" />
-      		  <p:calendar id="created_at" value="#{organisation.created_at}" required="true" />
-      		 
-      		   <p:message for="created_at" />
+            	
  			
         </h:panelGrid>
  
@@ -146,5 +134,6 @@
     
 
 </h:form></div>
+
  </ui:define>
 </ui:composition>

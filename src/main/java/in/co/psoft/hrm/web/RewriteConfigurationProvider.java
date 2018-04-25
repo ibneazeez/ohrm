@@ -32,7 +32,7 @@ public class RewriteConfigurationProvider extends HttpConfigurationProvider {
     public Configuration getConfiguration(final ServletContext context) {
         return ConfigurationBuilder.begin()
                 // welcome page
-                .addRule(Join.path("/").to("/index.xhtml"))
+                .addRule(Join.path("/").to("/users/userlist.xhtml"))
                 
                 // sends 403 for all *.jsf requests
                 .addRule()

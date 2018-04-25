@@ -12,9 +12,9 @@
 			<div class="container">
 				<div>
 				<TABLE><tr><td>
-					<h1>Users</h1></td>
-					<td><h:outputLink value="/users/addUser.xhtml"> <img src="./users/addbutton.jpg"
-									style="border: none;margin-left:1020px; max-width: 100%;width:60px" alt="test" /></h:outputLink>
+					<h3>UserPermissionList</h3></td>
+					<td><h:outputLink value="/users/userPermission.xhtml"> <img src="./addbutton.jpg"
+									style="border: none;margin-left:990px; max-width: 100%;width:60px" alt="test" /></h:outputLink>
 							</td></tr>
 					</TABLE>
 				</div>
@@ -24,20 +24,17 @@
 				</div>
 
 				<div class="table-responsive">
-					<h:dataTable value="#{userBean.users}" var="users"
-						styleClass="table table-striped table-hover">
+					<h:dataTable styleClass="table table-striped table-hover">
 						<h:column>
-							<f:facet name="header">User ID</f:facet>
-							<h:outputText value="#{users.id}" />
+							<f:facet name="header">Role</f:facet>
 						</h:column>
 						<h:column>
-							<f:facet name="header">FirstName</f:facet>
-							<h:outputText id="first_name" value="#{users.firstName}" />
+							<f:facet name="header">Section</f:facet>
 						</h:column>
 						<h:column>
-							<f:facet name="header">LastName</f:facet>
-							<h:outputText id="last_name" value="#{users.lastName}" />
+							<f:facet name="header">Employee Permission</f:facet>
 						</h:column>
+											
 						<h:column>
 							<h:commandLink value="Update" />
 						</h:column>

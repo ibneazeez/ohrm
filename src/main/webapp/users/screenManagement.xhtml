@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">    
+    
+
+    <ui:define name="body">
+		<TABLE>
+			<tr>
+				<td>
+					<h3>ScreenManagement</h3>
+				</td>
+				<!-- <td><h:outputLink value="/users/screenList.xhtml">
+						<img src="./arrow.jpg"
+							style="border: none; margin-left: 1020px; max-width: 80%; width: 40px"
+							alt="test" />
+					</h:outputLink></td> -->
+			</tr>
+		</TABLE>
+	
+		<div class="ui_text">
+    <h:form class="form-signin" method="POST" action="userBean.user">
+    
+    
+       <!--  <p:messages autoUpdate="false"/> -->
+        <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
+        <h:outputLabel for="sname" value="ScreenName" class="for-lable"/>
+            <!-- <input type="text" id="name" name="name" value="" class="form-control"
+				placeholder="Text only" required="required" autofocus="autofocus"
+				autocomplete="off" style="width: 300px;"/> -->
+				<p:inputText id="sname" value="" required="true" label="ScreenName"/>
+            <p:message for="sname"/>
+            <h:outputText value="#{addUser.sname}"/>
+     	           
+     
+     
+     	     	 </h:panelGrid> 
+        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#"/>
+        	
+      
+
+</h:form></div>
+ </ui:define>
+
+</ui:composition>
