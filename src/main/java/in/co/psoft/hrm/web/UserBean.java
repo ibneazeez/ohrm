@@ -7,14 +7,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.servlet.ServletContext;
 
 import javax.servlet.http.Part;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -83,15 +82,19 @@ public class UserBean {
 		System.out.println(user);
 		return "update"; 
 	}
-	
+	@Transactional
 	public String deleteUser(Long id) {
 		//user=userRepo.findById(id);
 		//System.out.println(user);
 		userDAO.delete(id);
+		addMessage("Success","User deleted successfully");
 	return "userlist";
 	}
 	
-
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 
 	private Part file1;
 

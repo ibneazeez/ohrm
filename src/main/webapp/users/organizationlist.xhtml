@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="body">
+		<h:form id="form">
+			<div class="container">
+				<div>
+				<TABLE><tr><td>
+					<h1>Users</h1></td>
+					<td><h:outputLink value="/users/addUser.xhtml"> <img src="./users/addbutton.jpg"
+									style="border: none;margin-left:1020px; max-width: 100%;width:60px" alt="test" /></h:outputLink>
+							</td></tr>
+					</TABLE>
+				</div>
+
+				<div>
+					<p:messages globalOnly="true" />
+				</div>
+
+				<div class="table-responsive">
+<h:dataTable value="#{organizationBean.organizations}" var="organizations" styleClass="table table-striped table-hover"> 
+ <h:column>
+          <f:facet name="header">ID</f:facet>
+          <h:outputText id="id" value="#{organizations.id}"/>
+        </h:column>
+          <!-- <h:column>
+          <f:facet name="header">Photo</f:facet>
+	<img src="#{userBean.user.employeePhoto}" height="90px" width="50px" />
+			</h:column>
+          -->
+        <h:column>
+          <f:facet name="header">Organization Name</f:facet>
+          <h:outputText id="name" value="#{organizations.name}" />
+        </h:column>
+        
+        <h:column>
+          <h:commandLink value="Update" action="#{organizationBean.getOrganization(organizations.id)}"/>
+        </h:column>
+        <h:column>
+       <h:commandLink value="Delete" onclick="alert('Do you want to delete #{organizations.id} Organization?')" actionListener="#{organizationBean.deleteOrganization(organizations.id)}"/>
+         </h:column>
+         
+          </h:dataTable>
+    </div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

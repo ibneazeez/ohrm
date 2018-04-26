@@ -28,21 +28,23 @@
     
     
        <!--  <p:messages autoUpdate="false"/> -->
-        <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
+        <h:panelGrid value="#{roleBean.role}" var="role" id="grid" columns="2" cellpadding="5" cellspacing="10">
         
+
         <h:outputLabel for="role" value="RoleName" class="text"/>
-             <p:inputText id="role" value="#{user.userRole}" required="true" label="RoleName" class="form-control" placeholder="Role Name"/>
-            <p:message for="role"/>
+             <p:inputText id="role" value="#{role.name}" required="true" label="RoleName" class="form-control" placeholder="Role Name"/>
+             <p:message for="role"/>
             <h:outputText value="#{addUser.role}"/>
      
-      <h:outputLabel for="status" value="Status" class="text" />
-            <p:selectOneMenu id="status" value="#{user.status}" style="width:150px" required="true">
-             <p:message for="status" />
+
+      <h:outputLabel for="status" value="Status" class="text"/>
+            <p:selectOneMenu id="status" value="#{role.status}" style="width:150px" required="true">
+<p:message for="status" />
                <f:selectItem itemLabel="Select"/>
             <f:selectItems value="#{addUser.status1}" />
             </p:selectOneMenu>
      	     	 </h:panelGrid> 
-        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#"/>
+        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{roleBean.saveRole}"/>
         	
       
 

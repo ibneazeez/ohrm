@@ -24,18 +24,18 @@
 				</div>
 
 				<div class="table-responsive">
-					<h:dataTable styleClass="table table-striped table-hover">
-						<h:column>
-							<f:facet name="header">Name</f:facet>
-						</h:column>
-											
-						<h:column>
-							<h:commandLink value="Update" />
-						</h:column>
-						<h:column>
-							<h:link value="Delete" />
-						</h:column>
+					<h:dataTable styleClass="table table-striped table-hover" value="#{screenBean.screens}" var="screens">
+						 <h:column>
+          <f:facet name="header">Screen ID</f:facet>
+          <h:outputText id="status" value="#{screens.id}"/>
+        </h:column>
+	 <h:column>
+          <f:facet name="header">Screen Name</f:facet>
+          <h:outputText id="name" value="#{screens.name}"/>
+        </h:column>
+         		
 					</h:dataTable>
+				
 				</div>
 			</div>
 		</h:form>

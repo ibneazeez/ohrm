@@ -159,6 +159,12 @@ PrimeFaces.validator['custom.emailValidator'] = {
         }
     };
 
+
+function myFunction(){
+	location.href='http://localhost:8090/'; 
+	return false;
+}
+
 </script>
 
 	<nav class="navbar navbar-inverse">
@@ -168,7 +174,7 @@ PrimeFaces.validator['custom.emailValidator'] = {
 				<!-- <a class="navbar-brand" href="#" style="color:#00BFFF;">HRM Application</a>		 -->	
 			</div>
 			<ul class="nav navbar-nav">
-				<li><h:outputLink value="/public/Organization.xhtml">Organisation</h:outputLink></li>
+				<li><h:outputLink value="/users/Organization.xhtml">Organisation</h:outputLink></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Configurations<span

@@ -24,19 +24,16 @@
 				</div>
 
 				<div class="table-responsive">
-					<h:dataTable styleClass="table table-striped table-hover">
-						<h:column>
-							<f:facet name="header">Role Name</f:facet>
-						</h:column>
-						<h:column>
-								<f:facet name="header">Status</f:facet>
-            			</h:column>
-						<h:column>
-							<h:commandLink value="Update" />
-						</h:column>
-						<h:column>
-							<h:link value="Delete" />
-						</h:column>
+				
+						<h:dataTable value="#{roleBean.roles}" var="roles" styleClass="table table-striped table-hover"> 
+ <h:column>
+          <f:facet name="header">Role Name</f:facet>
+          <h:outputText id="name" value="#{roles.name}"/>
+        </h:column>
+         		<h:column>
+          <f:facet name="header">Status</f:facet>
+          <h:outputText id="status" value="#{roles.status}"/>
+        </h:column>
 					</h:dataTable>
 				</div>
 			</div>

@@ -24,10 +24,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import in.co.psoft.hrm.bone.jsf.ViewScopedComponent;
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
-
+@Table(name="ohrm_users")
 @RequestScopedComponent("user")
 @Entity
 public class User implements Serializable {

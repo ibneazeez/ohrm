@@ -20,8 +20,8 @@
         <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
      
      
-       <h:outputLabel  value="UserID" style="font-weight:bold"/>
-            <p:inputText value="#{userBean.user.id}" readonly= "#{facesContext.renderResponse}"/>
+	       <h:outputLabel value="UserID" style="font-weight:bold"/>
+         <h:inputHidden value="#{userBean.user.id}" readonly= "#{facesContext.renderResponse}"/>
            
             
             

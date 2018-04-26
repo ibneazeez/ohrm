@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">    
+    
+<script type="text/javascript">
+PrimeFaces.validator['custom.emailValidator'] = {
+		 
+        pattern: /\S+@\S+/,
+ 
+        validate: function(element, value) {
+            //use element.data() to access validation metadata, in this case there is none.
+            if(!this.pattern.test(value)) {
+                throw {
+                    summary: 'Validation Error',
+                    detail: value + ' is not a valid email.'
+                }
+            }
+        }
+    };
+
+</script>
+
+  
+    <ui:define name="body">
+    <h2>Organization Details</h2>
+    
+    <div class="ui_text">
+    <h:form class="form-signin">
+    
+    
+       <!--  <p:messages autoUpdate="false"/> -->
+        <h:panelGrid id="grid" columns="2" cellpadding="5" cellspacing="10" value="#{organizationBean.organization}" var="organization">
+     		
+     		
+      
+     		
+     	    <h:outputLabel for="name" value="Name" class="text"/>
+            <p:inputText id="name" value="#{organization.name}" required="true" label="Name"/>
+            
+            <p:message for="name"/>
+            <h:outputText value="#{organization.name}"/>
+     	           
+ 			<h:outputLabel for="taxId" value="Tax id" class="text"/>
+            <p:inputText id="taxId" value="#{organization.taxId}" required="true" label="taxId">
+                <f:validateLength minimum="4" maximum="30" />
+            </p:inputText>
+            <p:message for="taxId" />
+            <h:outputText value="#{organization.taxId}" />
+            
+            <h:outputLabel for="registrationNumber" value="Registration Number" class="text"/>
+            <p:inputText id="registrationNumber" value="#{organization.registrationNumber}" required="true" label="registrationNumber">
+                <f:validateLength minimum="3" maximum="20"/>
+            </p:inputText>
+            <p:message for="registrationNumber" />
+            <h:outputText value="#{organization.registrationNumber}" />
+            
+            <h:outputLabel for="phone" value="Phone Number" class="text"/>
+            <p:inputText id="phone" value="#{organization.phone}" label="phone" required="true" minlength="9" maxlength="12">
+                <f:validateLength minimum="9" maximum="12"/>
+            </p:inputText>
+            <p:message for="phone" />
+            <h:outputText value="#{organization.phone}" />
+            
+            <h:outputLabel for="fax" value="Fax" class="text"/>
+            <p:inputText id="fax" value="#{organization.fax}" label="fax" required="true">
+                <f:validateLength minimum="9" maximum="15"/>
+            </p:inputText>
+            <p:message for="fax" />
+            <h:outputText value="#{organization.fax}" />
+            
+            <h:outputLabel for="email" value="Email" class="text"/>
+            <p:inputText id="email" value="#{organization.email}" required="true">
+<!--               <f:validator validatorId="custom.emailValidator" />
+ -->            </p:inputText>
+            <p:message for="email" display="tooltip" />
+            <h:outputText value="#{organization.email}" />
+            
+            <p:outputLabel for="country" value="Country " class="text" />
+            <p:selectOneMenu id="country" value="#{organization.country}" style="width:150px" required="true">
+                <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{dropdownView.countries}" />
+            </p:selectOneMenu>
+ 
+            <p:outputLabel for="city" value="State " class="text"/>
+            <p:selectOneMenu id="city" value="#{organization.city}" style="width:150px" >
+                <f:selectItem itemLabel="Select State" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{dropdownView.cities}" />
+            </p:selectOneMenu>
+            
+         
+ 			
+ 			 <h:outputLabel for="zipCode" value="ZipCode" class="text"/>
+            <p:inputText id="zipCode" value="#{organization.zipCode}" label="zipCode" required="true">
+                <f:validateLength minimum="6" maximum="6"/>
+            </p:inputText>
+            <p:message for="zipCode" />
+            <h:outputText value="#{organization.zipCode}" />
+            
+             <h:outputLabel for="street1" value="Street1" class="text"/>
+            <p:inputText id="street1" value="#{organization.street1}" required="true" label="street1" maxlength="100"/>
+            
+            <p:message for="street1"/>
+            <h:outputText value="#{organization.street1}"/>
+            
+             <h:outputLabel for="street2" value="Street2" class="text"/>
+            <p:inputText id="street2" value="#{organization.street2}" required="true" label="street2" maxlength="100"/>
+            
+            <p:message for="street2"/>
+            <h:outputText value="#{organization.street2}"/>
+            
+             <h:outputLabel for="note" value="Note" class="text"/>
+            <p:inputText id="note" value="#{organization.note}" required="true" label="note" maxlength="250"/>
+            
+            <p:message for="note"/>
+            <h:outputText value="#{organization.note}"/>
+            
+            <p:commandButton value="Update" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{organizationBean.updateOrganization(organization)}"/>      
+    
+  </h:panelGrid>
+</h:form></div>
+
+ </ui:define>
+</ui:composition>

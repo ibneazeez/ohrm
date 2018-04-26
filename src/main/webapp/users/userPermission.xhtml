@@ -6,7 +6,7 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:p="http://primefaces.org/ui">    
-    
+ 
 
     <ui:define name="body">
     
@@ -15,36 +15,25 @@
 				<td>
 					<h4 style="color:#483D8B;">Users Permission</h4>
 				</td>
-				<!-- <td><h:outputLink value="/users/userPermissionList.xhtml">
-						<img src="./arrow.jpg"
-							style="border: none; margin-left: 1000px; max-width: 80%; width: 40px"
-							alt="test" />
-					</h:outputLink></td> -->
+				
 			</tr>
 		</TABLE>
 
 		<div class="ui_text">
-    <h:form class="form-signin" method="POST" action="userBean.user">
+    <h:form class="form-signin" method="POST">
     
-            <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
+            <h:panelGrid value="#{userPermissionsBean.userPermissions}" var="userPermissions" id="grid" columns="2" cellpadding="5" cellspacing="10">
     
-       <!--  <p:messages autoUpdate="false"/> -->
-       
-       <h:outputLabel for="role" value="Role" class="text"/>
-            <p:selectOneMenu id="role" value="#{user.userRole}" style="width:150px" required="true" class="text">  
+      <h:outputLabel for="role" value="Role" class="text"/>
+            <p:selectOneMenu id="role" value="#{userPermissions.}" style="width:150px" required="true" class="text">  
             	<f:selectItem itemLabel="Select"/>          
                 <f:selectItems value="#{addUser.roles}" />
             </p:selectOneMenu>
-            
-         <!--   <h:outputLabel for="registration_number" value="Section" class="for-lable"/>
-            <input type="number" size="5" id="registration_number" name="registration_number" value="#{organisation.registration_number}" class="form-control"
-				placeholder="Integer 5 digits only" required="required" autofocus="autofocus"
-				autocomplete="off" style="width: 300px;"/> -->
 				<h:outputLabel for="section" value="Section" class="text"/>
            
      
      </h:panelGrid>
-     <h:panelGrid value="#{userBean.user}" var="user" id="grid1" columns="1" cellpadding="5" cellspacing="10">
+     <h:panelGrid value="#{userPermissionsBean.userPermissions}" var="userPermissions" id="grid1" columns="1" cellpadding="5" cellspacing="10">
      
      <div style="border:2px outset; width:400px; padding:10px; margin-right: 1020px; border-radius:30px;" class="box effect5">
 				<form action="/action_page.php" >

@@ -13,7 +13,7 @@
 				<div>
 				<TABLE><tr><th style="color:#483D8B;">
 					<h4>Users</h4></th>
-					<td><h:outputLink value="/users/addUser.xhtml"> <img src="./users/addbutton.jpg"
+					<td><h:outputLink value="/users/addUser.xhtml"> <img src="../addbutton.jpg"
 									style="border: none;margin-left:1020px; max-width: 100%;width:60px" alt="test" /></h:outputLink>
 							</td></tr>
 					</TABLE>
@@ -42,16 +42,26 @@
           <f:facet name="header">LastName</f:facet>
           <h:outputText id="last_name" value="#{users.lastName}" />
         </h:column>
-        
-        <h:column>
-          <h:commandLink value="Update" action="#{userBean.getUser(users.id)}"/>
+         <h:column>
+          <f:facet name="header">Role</f:facet>
+          <h:outputText id="role" value="#{users.userRole}" />
         </h:column>
-        <h:column>
-       <h:commandLink value="Delete" onclick="alert('Do you want to delete #{users.id} user?')" actionListener="#{userBean.deleteUser(users.id)}"/>
-         </h:column>
-         
-          </h:dataTable>
-     <h:commandLink value="+Add user" action="addUser"/>
+         <h:column>
+          <f:facet name="header">Status</f:facet>
+          <h:outputText id="status" value="#{users.status}" />
+        </h:column>
+       <h:column>
+         <table>
+         <tr>
+          <td><f:facet name="header" style="font-align:200px">Action</f:facet></td>
+         <td> <h:commandLink  action="#{userBean.getUser(users.id)}"> <img src="./editIcon.jpg"
+									style="border: none; max-width:80%; width:32px" alt="test" /></h:commandLink>
+		  <h:commandLink onclick="alert('Do you want to delete #{users.id} user?')" actionListener="#{userBean.deleteUser(users.id)}"> 
+		  <img src="./deleteIcon.png" style="border: none; margin-right:100px; max-width: 80%;width:18px" alt="test" /></h:commandLink></td></tr>
+		  </table>
+		 </h:column>
+        </h:dataTable>
+   
     </div>
 			</div>
 		</h:form>

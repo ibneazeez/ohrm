@@ -6,7 +6,7 @@
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
        xmlns:p="http://primefaces.org/ui">
-
+ 
        <ui:define name="body">
        
               <h4 style="color:#483D8B;">Employee Registration</h4>
@@ -124,7 +124,7 @@
                 <f:selectItems value="#{addUser.nationalities}" />
             </p:selectOneMenu>   
             
-        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.saveUser}"/>
+        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.saveUser}" onclick="myFunction()"/>
            
         </h:panelGrid>
 

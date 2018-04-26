@@ -19,9 +19,9 @@ public class DropdownView implements Serializable {
 
 	private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
     private String country; 
-    private String city;  
+    private String state;  
     private Map<String,String> countries;
-    private Map<String,String> cities;
+    private Map<String,String> states;
      
     @PostConstruct
     public void init() {
@@ -69,35 +69,35 @@ public class DropdownView implements Serializable {
         this.country = country;
     }
  
-    public String getCity() {
-        return city;
+    public String getState() {
+        return state;
     }
  
-    public void setCity(String city) {
-        this.city = city;
+    public void setState(String state) {
+        this.state = state;
     }
  
     public Map<String, String> getCountries() {
         return countries;
     }
  
-    public Map<String, String> getCities() {
-        return cities;
+    public Map<String, String> getStates() {
+        return states;
     }
  
     public void onCountryChange() {
         if(country !=null && !country.equals(""))
-            cities = data.get(country);
+            states = data.get(country);
         else
-            cities = new HashMap<String, String>();
+            states = new HashMap<String, String>();
     }
      
     public void displayLocation() {
         FacesMessage msg;
-        if(city != null && country != null)
-            msg = new FacesMessage("Selected", city + " of " + country);
+        if(state != null && country != null)
+            msg = new FacesMessage("Selected", state + " of " + country);
         else
-            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
+            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "state is not selected."); 
              
         FacesContext.getCurrentInstance().addMessage(null, msg);  
     }

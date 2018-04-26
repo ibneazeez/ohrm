@@ -28,19 +28,16 @@
     
     
        <!--  <p:messages autoUpdate="false"/> -->
-        <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10">
-        <h:outputLabel for="sname" value="ScreenName" class="text"/>
-            <!-- <input type="text" id="name" name="name" value="" class="form-control"
-				placeholder="Text only" required="required" autofocus="autofocus"
-				autocomplete="off" style="width: 300px;"/> -->
-				<p:inputText id="sname" value="" required="true" label="ScreenName" class="form-control" placeholder="Screen Name"/>
-            <p:message for="sname"/>
+        <h:panelGrid value="#{screenBean.screen}" var="screen" id="grid" columns="2" cellpadding="5" cellspacing="10">
+        <h:outputLabel for="name" value="ScreenName" class="text"/>
+           <p:inputText id="name" value="#{screen.name}" required="true" label="ScreenName" class="form-control" placeholder="Screen Name"/>
+            <p:message for="name"/>
             <h:outputText value="#{addUser.sname}"/>
      	           
-     
+      <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{screenBean.saveScreen}"/>
      
      	     	 </h:panelGrid> 
-        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#"/>
+       
         	
       
 
