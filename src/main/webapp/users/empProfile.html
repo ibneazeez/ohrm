@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<title>Example</title>
+
+<style>
+  * {
+    box-sizing: border-box; 
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+  }
+  .col-1 {
+    background: #D7E8D4;
+    flex: 1;
+  }
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    margin-left:20px;
+    
+  }
+  .content > article {
+    flex: 4;
+    min-height: 60vh;
+    
+  }
+  header {
+    background: #B2BEB5;
+    height: 25vh;
+    boder:1px;
+    padding:10px;
+    border-radius:30px;
+    
+  }
+  footer{
+    background: #B2BEB5;
+    height: 15vh;
+    boder:1px;
+    padding:10px;
+    border-radius:30px;
+  
+  }
+  header, footer, article, nav {
+    padding: 1em;
+    margin-top:10px
+  }
+  text{
+  margin-top:10px
+  }
+</style>
+
+  <nav class="col-1"><p>Allen Smith</p><img src="./personIcon.png" style="width:200px"></nav>
+  <div class="col-2">
+  	<header><h3>Personal Details</h3>
+  	<table cellpadding="8">
+  	<tr>
+  	<td><label>First Name</label></td>
+  	<td><input type=text style="margin-left:90px" value="Allen" placeholder="First name"/></td>
+  	<td><input type=text style="margin-left:80px" value="" placeholder="Middle name"/></td>
+  	<td><input type=text style="margin-left:50px" value="Smith" placeholder="Last name"/></td>
+  	
+  	</tr>
+  	<tr>
+  	<td><label class="text">Employee Id</label></td><td><input type=text value="507492" placeholder="Emp id" style="margin-left:90px"/></td></tr>
+  	</table>
+  	
+  	</header>
+   
+    <main class="content">
+    <article>
+    <table cellpadding="10"><tr>
+    <td><label>Gender</label></td>
+    <td><input type="radio" value="Male" style="margin-left:80px">Male
+    <input type="radio" value="Female"style="margin-left:5px"/>Female</td>
+    <td><label style="margin-left:110px">Marital Status</label></td>
+    <td> <select style="margin-left:110px">
+   <option value="select">Select</option>
+   <option value="single">Single</option>
+   <option value="married">Married</option>
+   </select></td>
+    </tr>
+    <tr>
+    <td><label>Nationality</label></td>
+    <td><select style="margin-left:80px">
+   <option value="select">Select</option>
+   <option value="Afghanistan">Afghanistan</option>
+   <option value="Denmark">Denmark</option>
+   <option value="Finland">Finland</option>
+   <option value="England">England</option>
+   <option value="SouthAfrica">SouthAfrica</option>
+   <option value="SriLanka">SriLanka</option>
+   <option value="India">India</option>
+   <option value="Zimbabwe">Zimbabwe </option>
+   </select></td>
+   <td><label style="margin-left:110px">Date of Birth</label></td>
+   <td><input type="date" style="margin-left:110px; width:100px"></td>
+   </tr>
+   </table>
+   
+   
+    </article>
+    </main>
+  	<footer><input type="submit" value="Save"></footer>
+  </div>
+
+</body>
+</html>
