@@ -1,137 +1,129 @@
 <!DOCTYPE html>
 <ui:composition template="/WEB-INF/templates/main.xhtml"
-       xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:ui="http://java.sun.com/jsf/facelets"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-       xmlns:p="http://primefaces.org/ui">
- 
-       <ui:define name="body">
-       
-              <h4 style="color:#483D8B;">Employee Registration</h4>
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 
-              <h:outputStylesheet name="css/login.css" />
- 
- 
- <div class="ui_text">
-    <h:form class="form-signin"  enctype="multipart/form-data">
-    
-    
-        <p:messages autoUpdate="false"/>
-        <h:panelGrid value="#{userBean.user}" var="user" id="grid" columns="2" cellpadding="5" cellspacing="10" >
-     
-       <h:outputLabel for="role" value="Role" class="text"/>
-            <p:selectOneMenu id="role" value="#{user.userRole}" required="true">  
-             <f:selectItem itemLabel="Select" styleClass="selectPanel"/>          
-                <f:selectItems value="#{addUser.roles}" />
-            </p:selectOneMenu>
-<!--             <h:outputLabel for="role" value="Role" style="font-weight:bold" />
-                                         <select> <option value="select" >Select</option>
-                                                       <option value="user">User</option>
-                                                       <option value="admin">Admin</option>
+	<ui:define name="body">
 
-                                         </select> -->
-            
-             <h:outputLabel for="uname" value="UserName" class="text"/>
-            <p:inputText id="uname" value="#{user.username}" required="true" label="UserName" class="form-control" placeholder="User Name">
-            <f:validateLength minimum="3" maximum="30" />
-                <p:clientValidator />
-            </p:inputText>
-        <p:message for="uname"/>
-            <h:outputText value="#{addUser.uname}"/>
-                  
-                     <h:outputLabel for="password" value="Password" class="text"/>
-             <p:password id="password" value="#{user.password}" feedback="false" required="true" match="password2" class="form-control" placeholder="Password"/>
-              <p:message for="password"/>
-              
-                     <br/><h:outputLabel for="password" value="ConfirmPassword" class="text"/>
-            <p:password id="password2" value="#{addUser.password}" feedback="false"  required="true" class="form-control" placeholder="Confirm Password" />
-              <p:message for="password"/>
-              
-              <br/>
-             <h:outputLabel for="status" value="Status" class="text"/>
-            <p:selectOneMenu id="status" value="#{user.status}" style="width:150px" required="true">
-             <p:message for="status" />
-               <f:selectItem itemLabel="Select"/>
-            <f:selectItems value="#{addUser.status1}" />
-            </p:selectOneMenu>
-           <!--  <h:outputLabel for="status" value="Status" style="font-weight:bold" />
-                                         <select> <option value="select" >Select</option>
-                                                       <option value="active">Active</option>
-                                                       <option value="inactive">Inactive</option>
+		<h4 style="color: #483D8B;">Employee Registration</h4>
 
-                                         </select>
- 
- -->               <h:outputLabel for="fname" value="FirstName" class="text"/>
-            <p:inputText id="fname" value="#{user.firstName}" required="true" label="FirstName" class="form-control" placeholder="First Name"/>
-            <p:message for="fname"/>
-            <h:outputText value="#{addUser.fname}"/>
-            
-            <h:outputLabel for="lname" value="LastName" class="text"/>
-            <p:inputText id="lname" value="#{user.lastName}" required="true" label="LastName" class="form-control" placeholder="Last Name"/>
-            <p:message for="lname"/>
-            <h:outputText value="#{addUser.lname}"/>
-            
-           <h:outputLabel for="mname" value="MiddleName" class="text"/>
-            <p:inputText id="mname" value="#{user.middleName}" required="true" label="MiddleName" class="form-control" placeholder="Middle Name"/>
-            <p:message for="mname"/>
-            <h:outputText value="#{addUser.mname}"/>
-         <!--   
-            <h:outputLabel value="Photo" style="font-weight:bold"/>
-            <p:fileUpload fileUploadListener="#{user.employeePhoto}" mode="advanced" dragDropSupport="false"
-           update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                     <p:growl id="messages" showDetail="true" />
-                    
- -->
- 
- 
-<h:outputLabel value="EmployeePhoto" class="text"/>
-<h:inputFile value="#{userBean.file1}" id="fileUpload"/>
-                 
+		<h:outputStylesheet name="css/login.css" />
 
-            
-              <p:outputLabel for="gender" value="Gender" class="text"/>
-          <p:selectOneRadio id="gender" required="true" value="#{user.gender}">
-               <p:message for="gender" />
-            <f:selectItem itemLabel="Male" itemValue="male" />
-            <f:selectItem itemLabel="Female" itemValue="female"/>
-            </p:selectOneRadio>
 
-            <h:outputLabel for="date" value="DOB:" class="text"/>
-               <p:calendar id="date" value="#{user.dob}" required="true"  />
-              
-                <p:message for="date" />
-                
-             <br/><h:outputLabel for="maritalstatus" value="MaritalStatus" class="text"/>
-            <p:selectOneMenu id="maritalstatus" value="#{user.maritalStatus}" required="true">
-             <p:message for="maritalstatus" />
-               <f:selectItem itemLabel="Select"/>
-            <f:selectItems value="#{addUser.maritalstatus1}" />
-            </p:selectOneMenu>
-            
-            <!-- <br/><h:outputLabel for="maritalstatus" value="MaritalStatus" style="font-weight:bold" />
-                                        <select> <option value="select" >Select</option>
-                                                       <option value="single">Single</option>
-                                                       <option value="married">Married</option>
+		<div class="ui_text">
+			<h:form class="form-signin" enctype="multipart/form-data">
 
-                                         </select>
- -->            
-            <h:outputLabel for="nationality" value="Nationality" class="text"/>
-            <p:selectOneMenu id="nationality" value="#{user.country}" style="width:150px" required="true">
-             <p:message for="role" />
-               <f:selectItem itemLabel="Select"/>
-                <f:selectItems value="#{addUser.nationalities}" />
-            </p:selectOneMenu>   
-            
-        <p:commandButton value="Submit" ajax="false" validateClient="true" style="margin-right:10px" update="grid" action="#{userBean.saveUser}" onclick="myFunction()"/>
-           
-        </h:panelGrid>
 
-     
-      
+				<p:messages autoUpdate="false" />
+				<h:panelGrid value="#{userBean.user}" var="user" id="grid"
+					columns="2" cellpadding="5" cellspacing="10">
 
-</h:form></div>
-       </ui:define>
+					<h:outputLabel for="role" value="Role" class="text" />
+
+					<h:selectOneMenu value="#{userBean.role}" converter="roleConverter">
+						<f:selectItems value="#{userBean.roleList}" var="roleData"
+							itemValue="#{roleData}" itemLabel="#{roleData.name}" />
+					</h:selectOneMenu>
+
+
+					<h:outputLabel for="uname" value="UserName" class="text" />
+					<p:inputText id="uname" value="#{user.username}" required="true"
+						label="UserName" class="form-control" placeholder="User Name">
+						<f:validateLength minimum="3" maximum="30" />
+						<p:clientValidator />
+					</p:inputText>
+					<p:message for="uname" />
+					<h:outputText value="#{addUser.uname}" />
+
+					<h:outputLabel for="password" value="Password" class="text" />
+					<p:password id="password" value="#{user.password}" feedback="false"
+						required="true" match="password2" class="form-control"
+						placeholder="Password" />
+					<p:message for="password" />
+
+					<br />
+					<h:outputLabel for="password" value="ConfirmPassword" class="text" />
+					<p:password id="password2" value="#{addUser.password}"
+						feedback="false" required="true" class="form-control"
+						placeholder="Confirm Password" />
+					<p:message for="password" />
+
+					<br />
+					<h:outputLabel for="status" value="Status" class="text" />
+					<p:selectOneMenu id="status" value="#{user.status}"
+						style="width:150px" required="true">
+						<p:message for="status" />
+						<f:selectItem itemLabel="Select" />
+						<f:selectItems value="#{addUser.status1}" />
+					</p:selectOneMenu>
+
+					<h:outputLabel for="fname" value="FirstName" class="text" />
+					<p:inputText id="fname" value="#{user.firstName}" required="true"
+						label="FirstName" class="form-control" placeholder="First Name" />
+					<p:message for="fname" />
+					<h:outputText value="#{addUser.fname}" />
+
+					<h:outputLabel for="lname" value="LastName" class="text" />
+					<p:inputText id="lname" value="#{user.lastName}" required="true"
+						label="LastName" class="form-control" placeholder="Last Name" />
+					<p:message for="lname" />
+					<h:outputText value="#{addUser.lname}" />
+
+					<h:outputLabel for="mname" value="MiddleName" class="text" />
+					<p:inputText id="mname" value="#{user.middleName}" required="true"
+						label="MiddleName" class="form-control" placeholder="Middle Name" />
+					<p:message for="mname" />
+					<h:outputText value="#{addUser.mname}" />
+
+
+					<h:outputLabel value="EmployeePhoto" class="text" />
+					<h:inputFile value="#{userBean.file1}" id="fileUpload" />
+
+
+
+					<p:outputLabel for="gender" value="Gender" class="text" />
+					<p:selectOneRadio id="gender" required="true"
+						value="#{user.gender}">
+						<p:message for="gender" />
+						<f:selectItem itemLabel="Male" itemValue="male" />
+						<f:selectItem itemLabel="Female" itemValue="female" />
+					</p:selectOneRadio>
+
+					<h:outputLabel for="date" value="DOB:" class="text" />
+					<p:calendar id="date" value="#{user.dob}" required="true" />
+
+					<p:message for="date" />
+
+					<br />
+					<h:outputLabel for="maritalstatus" value="MaritalStatus"
+						class="text" />
+					<p:selectOneMenu id="maritalstatus" value="#{user.maritalStatus}"
+						required="true">
+						<p:message for="maritalstatus" />
+						<f:selectItem itemLabel="Select" />
+						<f:selectItems value="#{addUser.maritalstatus1}" />
+					</p:selectOneMenu>
+
+
+					<h:outputLabel for="nationality" value="Nationality" class="text" />
+					<p:selectOneMenu id="nationality" value="#{user.country}"
+						style="width:150px" required="true">
+						<p:message for="role" />
+						<f:selectItem itemLabel="Select" />
+						<f:selectItems value="#{addUser.nationalities}" />
+					</p:selectOneMenu>
+
+					<p:commandButton value="Submit" ajax="false" validateClient="true"
+						style="margin-right:10px" update="grid"
+						action="#{userBean.saveUser}" onclick="myFunction()" />
+
+				</h:panelGrid>
+			</h:form>
+		</div>
+	</ui:define>
 </ui:composition>
 

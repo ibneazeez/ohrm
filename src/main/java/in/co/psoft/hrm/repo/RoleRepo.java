@@ -14,13 +14,14 @@ import in.co.psoft.hrm.domain.Role;
 public interface RoleRepo extends Repository<Role, Long>, QueryDslPredicateExecutor<Role> {
 
     List<Role> findAll();
-    
-  
+      
 	Page<Role> findAll(Pageable pageable);
 
 	Page<Role> findByNameContainingAllIgnoringCase(String name,Pageable pageable);
 
 	Role findByNameAllIgnoringCase(String name);
+	
+	Role findById(long id);
 	
 
 }

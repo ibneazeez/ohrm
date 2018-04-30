@@ -5,48 +5,83 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Collection;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 import javax.servlet.http.Part;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
+import in.co.psoft.hrm.domain.Role;
 import in.co.psoft.hrm.domain.User;
+import in.co.psoft.hrm.repo.RoleRepo;
 import in.co.psoft.hrm.repo.UserRepo;
 import in.co.psoft.hrm.web.UserDaoImplementation;
 
-
-
 @RequestScopedComponent("userBean")
-
 @ManagedBean
 public class UserBean {
-
 
 	@Autowired
 	private UserRepo userRepo;
 
 	@Autowired
+	private RoleRepo roleRepository;
+
+	@Autowired
 	private UserDaoImplementation userDAO;
+
 	@Autowired
 	private User user;
+
 	private List<User> users;
 
-	
+	private Role role;
+
+	private List<Role> roleList;
+
+	@PostConstruct
+	public void initRoleList() {
+		roleList = roleRepository.findAll();
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+
+	public Role getRoleObject(Long id) {
+		if (id == null) {
+			throw new IllegalArgumentException("no id provided");
+		}
+		Role roleData = roleRepository.findById(id);
+		return roleData;
+	}
+
 	public User getUser() {
 		return user;
-		
 	}
 
 	public void setUser(User user) {
-		
 		this.user = user;
 	}
 
@@ -55,6 +90,10 @@ public class UserBean {
 	}
 
 	public List<User> getUsers() {
+		org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+				.getContext().getAuthentication().getPrincipal();
+		Collection<GrantedAuthority> name = user.getAuthorities();
+		System.out.println(name);
 		if (users == null) {
 			users = userRepo.findAll();
 		}
@@ -65,8 +104,9 @@ public class UserBean {
 	public String saveUser() throws IOException {
 		String imgPath = this.uploadFile();
 		user.setEmployeePhoto(imgPath);
+		user.setUserRole(getRole());
 		userDAO.save(user);
-        return "userlist";
+		return "userlist";
 	}
 
 	public String updateUser(User user) throws IOException {
@@ -74,26 +114,19 @@ public class UserBean {
 		user.setEmployeePhoto(imgPath);
 
 		System.out.println(user);
-	userDAO.updateUser(user);
-	return "userlist";
-		}
+		userDAO.updateUser(user);
+		return "userlist";
+	}
+
 	public String getUser(Long id) {
-		user = userRepo.findById(id);	
+		user = userRepo.findById(id);
 		System.out.println(user);
-		return "update"; 
+		return "update";
 	}
-	@Transactional
+
 	public String deleteUser(Long id) {
-		//user=userRepo.findById(id);
-		//System.out.println(user);
 		userDAO.delete(id);
-		addMessage("Success","User deleted successfully");
-	return "userlist";
-	}
-	
-	public void addMessage(String summary, String detail) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		return "userlist";
 	}
 
 	private Part file1;
@@ -130,16 +163,17 @@ public class UserBean {
 
 		if (file1.getSize() > 0) {
 			fileName = Utils.getFileNameFromPart(file1);
-			
+
 			File f = new File(fileName);
 			fileName = f.getName();
 
 			/**
 			 * destination where the file will be uploaded
 			 */
-					 
-			File outputFile = new File(path+File.separator + "resources" + File.separator + "images" +File.separator+  fileName);
-		 inputStream = file1.getInputStream();
+
+			File outputFile = new File(
+					path + File.separator + "resources" + File.separator + "images" + File.separator + fileName);
+			inputStream = file1.getInputStream();
 			outputStream = new FileOutputStream(outputFile);
 			byte[] buffer = new byte[Constants.BUFFER_SIZE];
 			int bytesRead = 0;
@@ -159,8 +193,8 @@ public class UserBean {
 			 * set the success message when the file upload is successful
 			 */
 			setMessage("File successfully uploaded to " + path);
-			return "/resources/images/"+fileName;
-			
+			return "/resources/images/" + fileName;
+
 		} else {
 			/**
 			 * set the error message when error occurs during the file upload

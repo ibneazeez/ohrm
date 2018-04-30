@@ -12,6 +12,12 @@
     <lifecycle>
         <phase-listener>in.co.psoft.hrm.bone.jsf.SpringViewLocalePhaseListener</phase-listener>
     </lifecycle>
+    
+    
+    <converter>
+    	<converter-id>roleConverter</converter-id>
+    	<converter-class>in.co.psoft.hrm.web.RoleConverter</converter-class>
+	</converter>
 
 </faces-config>
 

@@ -21,70 +21,75 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import in.co.psoft.hrm.bone.jsf.ViewScopedComponent;
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
-@Table(name="ohrm_users")
+
+@Table(name = "ohrm_users")
 @RequestScopedComponent("user")
 @Entity
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
 
-	@Column(nullable = false,name="firstname")
+	@Column(name = "firstname")
 	private String firstName;
 
-	@Column(nullable = false,name="lastname")
+	@Column(name = "lastname")
 	private String lastName;
-	@Column(nullable = false,name="user_role")
-	private String userRole;
-	@Column(nullable = false,name="password")
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_role")
+	private Role userRole;
+
+	@Column(name = "password")
 	private String password;
-	@Column(nullable = false,name="username")
+	@Column(name = "username")
 	private String username;
-	@Column(nullable = false,name="status")
+	@Column(name = "status")
 	private String status;
-	@Column(nullable = false,name="organization_id")
+	@Column(name = "organization_id")
 	private int organizationId;
-	@Column(nullable = false,name="middlename")
+	@Column(name = "middlename")
 	private String middleName;
-	@Column(nullable = false,name="employee_id")
+	@Column(name = "employee_id")
 	private String employeeId;
-	@Column(nullable = false,name="employee_photo")
+	@Column(name = "employee_photo")
 	private String employeePhoto;
-	@Column(nullable = false,name="country")
+	@Column(name = "country")
 	private String country;
-	@Column(nullable = false,name="marital_status")
+	@Column(name = "marital_status")
 	private String maritalStatus;
-	@Column(nullable = false,name="gender")
+	@Column(name = "gender")
 	private String gender;
-	@Column(name="dob")
+	@Column(name = "dob")
 	Date dob;
 
 	public String getEmployeePhoto() {
 		return employeePhoto;
 	}
 
-
-
 	public void setEmployeePhoto(String employeePhoto) {
 		this.employeePhoto = employeePhoto;
 	}
 
-public void setDob(Date dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
-public Date getDob() {
-	return dob;
-}
+	public Date getDob() {
+		return dob;
+	}
 
 	public String getMaritalStatus() {
 		return maritalStatus;
@@ -94,13 +99,11 @@ public Date getDob() {
 		this.maritalStatus = maritalStatus;
 	}
 
-
-
-	public String getUserRole() {
+	public Role getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(String userRole) {
+	public void setUserRole(Role userRole) {
 		this.userRole = userRole;
 	}
 
@@ -152,8 +155,6 @@ public Date getDob() {
 		this.employeeId = employeeId;
 	}
 
-	
-
 	public String getGender() {
 		return gender;
 	}
@@ -161,8 +162,8 @@ public Date getDob() {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-		public String getCountry() {
+
+	public String getCountry() {
 		return country;
 	}
 
@@ -170,31 +171,29 @@ public Date getDob() {
 		this.country = country;
 	}
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public User() {}
+	public User() {
+	}
 
-		public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
-		public void setFirstName(String firstName) {
-		this.firstName=firstName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-		public User(String firstName, String lastName) {
-			super();
-			this.firstName = firstName;
-			this.lastName = lastName;
-		}
 
-
+	public User(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public void setLastName(String lastName) {
-		this.lastName=lastName;
+		this.lastName = lastName;
 	}
 
 	public String getFirstName() {
@@ -205,8 +204,6 @@ public Date getDob() {
 		return this.lastName;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userRole=" + userRole
@@ -216,7 +213,4 @@ public Date getDob() {
 				+ ", dob=" + dob + "]";
 	}
 
-	
-	
 }
-

@@ -4,6 +4,7 @@ package in.co.psoft.hrm.web;
 import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,10 +12,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 import in.co.psoft.hrm.bone.spring.RequestScopedComponent;
+import in.co.psoft.hrm.domain.Role;
+import in.co.psoft.hrm.repo.RoleRepo;
 
 @RequestScopedComponent("addUser")
 @ManagedBean
@@ -26,7 +28,7 @@ public class AddUser {
 	private String mname;
 	private String sname;
 	private String role;
-	private Map<String,String> roles;
+	private Map<String, Long> roles;
 	private String status;
 	private Map<String,String> status1;
 	private String maritalstatus;
@@ -41,12 +43,20 @@ public class AddUser {
     private String regexText;
     private Date date;
     
+    @Autowired
+    private RoleRepo roleRepository;
+    
     @PostConstruct
   public void init() {
-        roles  = new HashMap<String, String>();
-        roles.put("Admin", "Admin");
-        roles.put("User", "User");
-        
+    	
+    	List<Role> roleList = roleRepository.findAll();
+        roles  = new HashMap<String, Long>();
+    	if(roleList != null) {
+    		for(Role role: roleList) {
+    			roles.put(role.getName(), role.getId());
+    		}
+    	}
+
         status1 = new HashMap<String, String>();
         status1.put("Active", "Active");
         status1.put("InActive", "InActive");
@@ -172,7 +182,7 @@ public class AddUser {
 
 */
 
-    public Map<String, String> getRoles() {
+    public Map<String, Long> getRoles() {
 		return roles;
 	}
 
@@ -192,7 +202,7 @@ public class AddUser {
 		this.status1 = status1;
 	}
 
-	public void setRoles(Map<String, String> roles) {
+	public void setRoles(Map<String, Long> roles) {
 		this.roles = roles;
 	}
 

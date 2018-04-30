@@ -12,4 +12,9 @@ insert into city(country, name, state, map) values ('UK', 'Southampton', 'Hampsh
 insert into city(country, name, state, map) values ('USA', 'Atlanta', 'GA', '33.748995, -84.387982');
 insert into city(country, name, state, map) values ('USA', 'Chicago', 'IL', '41.878114, -87.629798');
 insert into city(country, name, state, map) values ('USA', 'Eau Claire', 'WI', '44.811349, -91.498494');
-insert into ohrm_users(firstname, lastname, middlename, user_role, username, password, status, organization_id,employee_id, employee_photo, gender, marital_status, dob, country) values ( 'Sunil', 'Suresh', 'Raja', 'admin', 'uname', 'pword', 'Active', 1, 'EPM008', 'photo.png', 'Male', 'Single', null , 'india');  
+
+insert into ohrm_role(name, organization_id, status)values ('admin', 1, 'active');
+insert into ohrm_role(name, organization_id, status)values ('user', 1, 'active');
+
+
+insert into ohrm_users(firstname, lastname, middlename, user_role, username, password, status, organization_id,employee_id, employee_photo, gender, marital_status, dob, country) values ( 'Sunil', 'Suresh', 'Raja', 1, 'uname', 'pword', 'Active', 1, 'EPM008', 'photo.png', 'Male', 'Single', null , 'india');  
